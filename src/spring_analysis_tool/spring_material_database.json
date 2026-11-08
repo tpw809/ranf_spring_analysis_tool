@@ -1,0 +1,58 @@
+[
+"material": {
+	"type": "material",
+	"name": "Music Wire (High Carbon Steel)",
+	"spec": "ASTM A228",
+	"units": "lb_in_F",
+	"elastic_modulus": 30.0e6,
+	"torsion_modulus": 11.5e6,
+	"elastic_limit_ratio": 0.6,
+	"ultimate_tensile_strength": null,
+	"yield_shear_strength": null,
+	"max_operating_temperature": 250.0,
+	"density": 0.28,
+	"description": "High quality spring wire that is cold drawn with good surface finish. Highly magnetic. Generally good fatigue life due to high tensile strength."
+},
+"material": {
+	"type": "material",
+	"name": "Hard Drawn MB (High Carbon Steel)",
+	"spec": "ASTM A227",
+	"units": "lb_in_F",
+	"elastic_modulus": 30.0e6,
+	"torsion_modulus": 11.5e6,
+	"elastic_limit_ratio": null,
+	"ultimate_tensile_strength": null,
+	"yield_shear_strength": null,
+	"max_operating_temperature": 250.0,
+	"density": 0.28,
+	"description": "General purpose spring wire for low to average stress applications. Cold drawn to desired properties. Highly magnetic."
+},
+"material": {
+	"type": "material",
+	"name": "Oil Tempered MB (High Carbon Steel)",
+	"spec": "ASTM A229",
+	"units": "lb_in_F",
+	"elastic_modulus": 30.0e6,
+	"torsion_modulus": 11.5e6,
+	"elastic_limit_ratio": null,
+	"ultimate_tensile_strength": null,
+	"yield_shear_strength": null,
+	"max_operating_temperature": 250.0,
+	"density": 0.28,
+	"description": "General purpose spring wire for average stress applications. Highly magnetic. Often used for larger wire sizes when Music Wire is not available."
+}
+"material": {
+	"type": "material",
+	"name": "Stainless Steel 17-7PH CH900",
+	"spec": "ASTM A313 A613",
+	"units": "lb_in_F",
+	"elastic_modulus": 29.5e6,
+	"torsion_modulus": 11.0e6,
+	"elastic_limit_ratio": 0.75,
+	"ultimate_tensile_strength": 235.0e3,
+	"yield_shear_strength": 106.0e3,
+	"max_operating_temperature": 650.0,
+	"density": 0.286,
+	"description": "17-7 PH stainless steel is a precipitation-hardening stainless steel alloy widely used for high-strength springs, washers, and wire forms; Corrosion Resistance: Comparable to Type 304 stainless steel in most mild chemical, fresh water, and atmospheric environments, though it can develop superficial rust in marine/saltwater settings. The recommended maximum torsional design stress is commonly estimated around 45% of the minimum ultimate tensile strength."
+}
+]

@@ -1,0 +1,1539 @@
+MIL-STD-29A
+
+MILITARY STANDARD
+
+SPRINGS, MECHANICAL; DRAWING REQUIREMENTS FOR
+
+1. SCOPE
+
+1.1 SCOPE. 
+
+This standard illustrates the approved method of drawing, dimensioning, and specifying spring data on detail drawings of each type of mechanical spring described herein.
+Adherence to this standard is mandatory in the preparation of drawings prepared by or for the Department of Defense.
+Appendix A contains material, design and manufacturing data representative of modern spring engnieering.
+It is included herein for guidance and conveniance only and contains no mandatory provisions.
+
+1.1.1 Types of springs. 
+
+The types of springs describeed in this standard are:
+
+1.1.1.1 Compression.
+
+(a) Helical, Cylindrical; (b) Helical, Stranded Wire; (c) Volute; (d) Coned Disc (Belleville)
+
+1.1.1.2 Extension.
+
+(a) Helical
+
+1.1.1.3 Torsion.
+
+(a) Helical; (b) Volute; (c) Spiral
+
+1.1.1.4 Flat.
+
+(a) Cantilever
+
+1.1.1.5 Constant force.
+
+(a) Flat Strip
+
+1.1.1.6 Garter.
+
+(a) Helical
+
+1.2 Purpose.
+
+The purpose of this standard is to establish uniform methods of specifying end product data for mechanical springs on drawings prepared by or for the Department of Defense.
+
+2. REFERENCED DOCUMENTS
+
+2.1 NOT APPLICABLE
+
+
+3. DEFINITIONS
+
+3.1 MECHANICAL SPRING. 
+
+An elastic body whose mechanical function is to store energy when deflected under load and return the equivalent amount of energy upon being released.
+
+3.2 LOAD. 
+
+The force exerted upon or by a spring in order to reproduce or modify motion or to maintain a force system in equilibrium.
+A static load is slowly applied and does not subject a spring to fatigue.
+A dynamic load is either a suddenly applied load or one that causes impact due to kinetic energy. 
+It also may be frequently repeated, thus shortening fatigue life.
+
+3.3 TOTAL DEFLECTION. 
+
+The movement of a spring from free position to its maximum operating position. 
+In a compression spring, it is the deflection from the Free
+Length to the Solid Length.
+
+3.4 DEFLECTION PER COIL. 
+
+The total deflection of the spring divided by the number of active coils.
+
+3.5 SET. 
+
+The permanent distortion from the manufactured dimensions which occurs when the spring is stressed beyond the elastic limit of the material.
+
+3.6 ACTIVE COILS. 
+
+The number of coils which are used in computing the total deflection of the spring.
+
+3.7 TOTAL COILS. 
+
+The number of active coils plus the coils forming the ends, (Compression Springs).
+
+3.8 SOLID LENGTH. 
+
+The overall length of a compression spring when all coils are fully compressed.
+
+3.9 FREE LENGTH. 
+
+The overall length of a spring in the unloaded position.
+
+3.10 PITCH. 
+
+The distance between centers of adjacent active coils of a spring in the unloaded position.
+
+3.11 TENSION.
+
+A load wound into certain helical extension springs during the
+coiling operation which keeps the coils tightly closed and which must be exceeded by an appleid load before the coils begin to open.
+
+3.12 SPRING INDEX. 
+
+The ratio of the mean spring diameter to the diameter of the wire.
+
+Spring index = D/d = (OD - d) / d = (ID + d) / d
+
+3.13 SPRING RATE. 
+
+The load required to deflect a commpression or extension spring one inch or the load required to deflect a torsion spring one degree or one revolution. 
+Also referred to as "Scale," "Gradient" and "Load Factor."
+
+3.14 TORQUE. 
+
+A turning force about an axis multiplied by the distance from the
+load to the axis, usually expressed in pound-inches (LB IN.) or in ounce-inches (OZ IN.) and always used in conjunction with the number of degrees of rotation, number of revolutions or deflected position.
+
+3.15 SPRING TOLERANCE.
+
+The permissible variations from a given dimension.
+
+3.16 FACTOR OF SAFETY. 
+
+The ratio of the maximum load a spring can sustain without permanent set to the maximum applied load.
+
+3.17 DIRECTION OF HELIX.
+
+When a spring is viewed from one end, the direction of helix is right hand when the coil recedes in a clockwise direction, and left hand when it recedes in a counterclockwise direction. 
+A right hand helix follows the same direction as the threads on a standard screw. 
+A left hand helix is most popular for compression and extension springs.
+
+3.18 REFERENCE DIMENSION. 
+
+A reference dimension is a dimension without tolerance which is entered on a drawing for informational purposes and which does not directly govern manufacturing or inspection operations. 
+Reference dimensions are indicated on drawings by writing the abbreviation REF directly following or under the dimension.
+
+3.19 STRESS RELIEVE.
+
+To subject springs to a low temperature heat treatment after coiling or bending to remove residual stresses caused by the forming operation. 
+Also called "strain relieve", "stress equalizing", "tempering", "blueing" and "baking".
+
+3.20 RANGE OF STRESS.
+
+The difference between the stress at maximum and minimum loads.
+
+3.21 HARDEN. 
+
+To cause a material to become harder by heat treatment. 
+Spring steels are heated above the critical temperature and quenched in oil. 
+Precipitation hardening alloys such as Beryllium-Copper, K-Monel and Inconel X are heated at elevated temperatures for extended periods of time.
+
+3.22 ENDURANCE LIMIT. 
+
+The maximum stress range of stress at which a material will operate indefinitely without failure. 
+This limit for springs is usually determined at 10,000,000 cycles of deflection.
+
+3.23 ELASTIC LIMIT. 
+
+The maximum stress to which a material may be subjected without causing a permanent set. 
+Also the stress beyond which a material must be subjected to form a coil, radius or bend.
+
+3.24 MODULUS OF RIGIDITY. 
+
+The measure of elastic ability. 
+A mathematical constant expressing the stiffness, rigidity, elasticity and flexibility of a material. 
+Also called "modulus of elasticity" and "Young modulus".
+
+4. General Requirements
+
+4.1 Not Applicable
+
+5. Detailed Requirements
+
+5.1 General.
+
+Figures 2(a) through 2(d), 4(a) through 4(d), 7, 10, 12, 13, 14, 16, 17 and 18 are Drawing Requirement Charts illustrating approved methods of drawing and dimensioning the various types of springs listed in paragraph 1.1.1 and include compilations of spring data to be used as applicable when prescribing manufacturing information on detail drawings of mechanical springs. 
+The inclusion herein of these charts should not be interpreted as restricting the scope of spring characteristics to be specified on engineering drawings delineating springs. 
+The specification of correct and complete manufacturing data is the responsibility of the cognizant Design Activity.
+Figures 19 thru 30 are examples of typical detail drawings of springs illustrating the application of the information included on the charts.
+
+5.1.1 Delineation.
+
+The simplified drafting methods shown on the Drawing Requirement Charts and the typical detail drawings, e.g., Figures 2(a) and 19, are generally satisfactory for depicting helical springs.
+
+5.2 Specifications Applicable to All Springs:
+
+5.2.1 Material Specifications.
+
+Material specifications are designated in the space provided in the title block on the drawing. 
+When such space is inadequate enter therein "SEE NOTE" and describe the material requirments in a general note.
+
+5.2.2 Diameter of wire.
+
+Wire diameter, or width an thickness of material, shall be designated in decimals, or common fractions of an inch, as applicable, and unless otherwise specified, all dimensions apply before plating or applying finishes. 
+Such dimensions are used to avoid confusion resulting from various gage numbering systems in current use. 
+However, they should conform with the appropriate gage customarily used with the material specified, whenever possible. 
+For oil tempered and corrosion resisting steels such diameters should conform with the U. S. Steel Wire Gage, which is the same as the Washburn & Moen Gage. 
+For non-ferrous materials the American Wire Gage, which is the same as the Brown & Sharpe Gage, is used. 
+Music Wire is drawn to the American Steel Wire and Music Wire Gage but other gages and intermediate sizes are available. 
+Do not specify the name of the Gage used. 
+Tolerances on diameter and thickness shall not be specified when they are covered in the appropriate material specifications or by general tolerance notes.
+Specify a tolerance on the width, as applicable. 
+See Table I, Preferred Sizes of Spring Materials, in Appendix A, Section I.
+
+5.2.3 Inspection Notes.
+
+Detail drawings of springs that are critical, including those
+springs subjected to critical conditions of temperature, stress or corrosive environments, shall include appropriate instruction
+notes applicable to controlling the manufacture within the desired environments. 
+It is appropriate to specify those spring factors requiring inspection, the tests required, and whether all springs produced from the particular drawing shall be inspected. 
+Consistent with Quality Control Procedure the size of inspection samples shall not be specified.
+
+5.3 FORMAT FOR SPECIAL DATA NOTES.
+
+When notes prescribing special data are required on detail drawings of springs, it is recommended that the following format be used:
+
+(a) Stress at ... F +/- ... F for ... minutes, after coiling (or forming)
+
+(b) Hardness range Rc ... to ...
+
+(c) Squareness of ends in free position within ... degrees
+
+(d) Cold set to solid.
+
+(e) Shot peen (give specification) to... intensity.
+
+(f) Protective coating (give specification).
+
+(g) Non destructive inspection (give specification).
+
+(h) The body shall not camber more than ... IN. in its entire length
+
+(i) Test over arbor dia ... IN.
+
+(j) To withstand temperatures of...F for ...hours with loss of load not to exceed...%.
+
+(k) To withstand ... deflections from initial to final position with loss of load not to exceed...%.
+
+5.4 Helical Compression Springs
+
+5.4.1 Definition.
+
+A compression spring is an open-coil helical spring that offers resistance to a compressive force applied axially. 
+Compression springs are generally made cylindrical in form, although other forms are used, such as conical, tapered, concave or convex, consistent with design requirements. 
+Because of ready supply, wire of circular cross section is used whenever possible; however, where advantageous to design, wire of
+square or rectangular cross section may be utilized. 
+Figure 1 illustrates several forms of helical compression springs.
+
+5.4.2 Drawing Requirements for Helical Compression Springs.
+
+Guide lines for specifying pertinent dimensional and load data on engineering drawings of helical compression springs, which satisfy specific design requirements and, simultaneously, allow maximum latitude in manufacturing, are provided herein, categorized as follows:
+
+(1) No Load Specified. 
+
+The design activity assumes responsibility for the load capacity of the spring. 
+The manufacturer is required to furnish a spring meeting the dimensional data specified. 
+The free length, the coil diameter, and the total number of coils are specified, each with a tolerance.
+The tolerance on the wire diameter conforms to the governing material specification.
+Figure 2(a) shows suggested data applicable to springs in the "no load" category.
+
+(2) One Load Specified.
+
+This category has application when the spring is required to develop a load, within a specified tolerance, preferably at the initial assembled length.
+The spring, normally, is not subjected to further deflection in operation. 
+The manufacturer is required to meet the load requirement, but the free length and the total number of coils are not restricted, being designated REF. 
+The tolerance on the wire diameter conforms to the governing material specification and the manner of coil diameter callout is dependent upon spring function. 
+Figure 2(b) shows suggested data applicable to springs in the "one load" category.
+
+(3) Two Loads Specified. 
+
+This category has application when the spring is required to develop a load within a specified tolerance, at each of two definite compressed lengths, normally at the initial and the final operating positions in the assembly. 
+The manufacturer is required to meet the load requirements, other spring characteristics being designated as described in paragraph 5.4.2 (2). 
+Figure 2(c) shows suggested data applicable to springs in the "two loads" category.
+
+(4) Spring Rate Specified. 
+
+This category has application in assemblies in which the spring rate is the most significant characteristic, for example, in calibrated scales. 
+The manufacturer is required to meet a prescribed spring rate, within a specified tolerance, but the free length and the total number of coils are permitted to vary, being designated REF. 
+The tolerance on the wire diameter conforms to the governing material specification and the manner of coil diameter callout is dependent upon the spring function. 
+Additionally, when closer control of the load to be developed at the initial assembled length is desired, one load, with a tolerance, to be developed at the assembled length should be specified. 
+Figure 2(d) shows suggested data applicable to springs in the "spring rate" category.
+
+5.4.2.1 Coil Diameter.
+
+Depending upon the application of the spring, specify one of the
+following:
+
+(a) TO WORK OVER... IN. (MAX) DIA ROD
+
+(b) TO WORK IN... IN. (MIN) DIA BORE
+
+(c) ID, with tolerance
+
+(d) OD, with tolerance
+
+5.4.2.2 Direction of Helix
+
+When governed by design requirements, specify the direction of helix as "LEFT HAND" (or LH), or "RIGHT HAND" (or RH), as applicable; otherwise specify as OPTIONAL. 
+In most cases the hand is not important except when a plug screws into an end; or when one spring fits inside another, in which case one spring should be designated left hand and the other right hand.
+
+5.4.2.3 Types of Ends
+
+The types of ends having application to helical compression springs are illustrated in Figure 3. 
+Specify the type of ends on the drawing; when necessary, the ends should be dimensioned.
+
+5.4.2.4 Solid Length
+
+The maximum solid length shall be specified for any spring category when this parameter is essential to design requirements. 
+However, solid length callout should be omitted whenever practicable. 
+Except when necessary to satisfy function, springs should not be designed to go solid in operation.
+
+Page 6:
+Figure 1. Helical Compression Spring Forms
+
+Page 7:
+Figure 2a. Drawing Requirements for Helical Compression Springs When No Load is Specified
+
+Page 8:
+Figure 2b. Drawing Requirements for Helical Compression Springs When One Load is Specified
+
+Page 9:
+Figure 2c. Drawing Requirements for Helical Compression Springs When Two Loads are Specified
+
+Page 10: 
+Figure 2d. Drawing Requirements for Helical Compression Springs When Spring Rate is Specified
+
+Page 11:
+Figure 3 Types of Helical Compression Spring Ends
+
+Page: 11
+
+5.5 Stranded Wire Compression Springs
+
+5.5.1 Definition.
+
+Stranded wire compression springs are helical compression springs formed from two, three, or more wires twisted about each other, or about one wire as a core, to form a single strand. 
+Stranded wire compression springs have the advantage of damping the migratory waves that traverse the spring under shock loading. 
+Such springs should be specified with caution since stranded wire is specially made and is not readily available.
+
+5.5.2 Drawing Requirements for Stranded Wire Compression Springs.
+
+Figure 20 is a typical detail drawing of a stranded wire helical compression spring. 
+The methods of drawing and dimensioning, and the spring data applicable to stranded wire spring correspond in general to those shown in Figures 2(c) for compression springs, except that the additional spring information noted herein is required on detail drawings:
+
+(a) Number of Wires in Strand.
+
+(b) Diameter of each Wire.
+
+(c) Length of Lay (Distance parallel to strand axis in which a single wire makes one turn.)
+
+(d) Direction of strand helix. NOTE: The strand helix shall be opposite in turn to the coil helix.
+
+(e) Direction of coil helix (Left Hand or Right Hand).
+
+(f) Type os Ends. Specify either Closed Ends Not Ground or Open Ends Not Ground, as applicable. 
+Specify that ends are to be soldered, brazed, or welded to prevent unraveling, and sharp burrs shall be removed.
+
+5.6 Helical Extension Springs
+
+5.6.1 Definition.
+
+A helical extension spring is a close-wound spring with or without initia tension, or an open-would spring
+
+
+5.6.2 Drawing Requirements for Helical Extension Springs.
+
+
+5.6.2.1 Total Coils and Length ??? Coils.
+
+
+5.6.2.2 Maximum Extended Length.
+
+
+5.6.2.3 Types of Ends.
+
+
+5.6.2.4 Relative Position of Ends.
+
+
+5.7 Helical Torsion Springs
+
+
+
+
+
+
+5.9 Torsion Bar Springs
+
+5.9.1 Definition.
+
+
+5.10 Volute Springs
+
+5.10.1 Definition.
+
+
+
+5.11 Coned Disc (Belleville) Springs
+
+5.11.1 Definition.
+
+
+
+5.12 Flat Springs
+
+5.12.1 Definition.
+
+
+
+5.13 Constant Force Springs
+
+5.13.1 Definition.
+
+
+5.14 Garter Springs
+
+
+
+
+# Page:
+Figure
+
+
+Appendix A
+
+THIS APPENDIX IS FOR THE PURPOSE OF PROVIDING GUIDANCE TO DESIGN ENGINEERS AND INCLUDES NO MANDATORY PROVISIONS.
+
+10. DESIGN OF MECHANICAL SPRINGS
+
+10.1 PURPOSE. 
+
+The purpose of this appendix is to provide ready reference data to spring design information including data on materials, design, manufacturing processes and recommended tolerances. 
+The information contained herein is intended to provide guidance to the designers of springs and not to impose restrictions in design.
+
+10.2 SCOPE. 
+
+The data contained in this appendix are sufficient for general spring design.
+This appendix is divided into three sections: 
+Section 1— MATERIALS 
+Section II — DESIGN, and 
+Section III — MANUFACTURE.
+
+APPENDIX A, SECTION I
+
+11. SPRING MATERIALS
+
+11.1 GENERAL. 
+
+More than forty different steel compositions, seven corrosion resisting steels and about twenty different non-ferrous compositions are used as spring materials. 
+Each has some particular advantage over the others and the selection is based on seeking, in addition to other requirements, the best behavior in applications involving high stress, shock loads, elevated temperatures and corrosion resistance. 
+All spring wire should be used in round cross-section whenever possible as it is more readily available, less expensive, usually has higher mechanical properties and is easier to fabricate. 
+Steel wire has the longest fatigue life and can withstand the highest stresses. 
+Copper-base alloys have the best electrical conductivity combined with good corrosion resistance. 
+Corrosion resisting steels have good resistance to moderately elevated temperatures and to corrosion. 
+Nickel-base alloys have the best resistance to elevated temperatures combined with excellent corrosion resistance. 
+More specific data on these materials is covered in this section. 
+The SAE and AISI references and the specifications of bar in the following paragraphs represent typical compositions of metal from which springs with the specified mechanical properties can be produced.
+
+
+11.2 Sizes AVAILABLE. 
+
+In the column headed Mechanical Properties in Paragraphs 12.2 through 17.3 are shown "Sizes Available", which lists the range of sizes usually available from warehouses or wire mills. 
+For most materials both smaller and larger sizes can be obtained on special order. 
+The sizes shown in Table I, Appendix A, Section I, should be used wherever possible.
+
+
+12 HIGH CARBON STEELS
+
+l2.1 GENERAL. 
+
+The most commonly used of all spring materials are the high carbon spring steels. 
+These materials are used in Music-Wire, Hard-Drawn Wire, Oil Tempered Wire and Valve Spring Wire. 
+All are readily available in a wide variety of sizes. 
+These materials should be used in preference to other materials whenever the design requirements permit their use. 
+They are not usually recommended for sub zero temperature applications.
+
+12.2 MUSIC WIRE QQ-W-470, ASTM A228-51
+
+
+
+
+12.3 HARD DRAWN STEEL WIRE QQ-W-428, TYPE II; ASTM A227-47
+
+
+
+12.4  OIL TEMPERED STEEL WIRE QQ-W-428, TYPE I; ASTM A229-56
+
+
+12.5 CARBON-STEEL VALVE SPRING QUALITY WIRE ASTM A280-47
+
+
+Because of the absence of scale on this material, it is suitable for use where flaking of scale would clog or otherwise injure moving parts. 
+This material is recommended for springs of ininite life with an average stress range. 
+This material is available in the tempered and annealed condition, but the tempered condition is most often used. 
+The annealed condition should be used with subsequent hardeníng
+and tempering for snrino rith a los nring index (less than 5) or where severe forming is required.
+
+
+
+
+13. ALLOY STEEL WIRE AND BAR
+
+13.1 GENERAL.
+
+Alloy spring steels are particularly useful in applications involving high atmas and where shock or impact loadings occur.
+They can also withstand higher and lower temperature conditions than the carbon spring Steels. 
+All these alloys are generally used in the oil tempered or pre-hardened condition. 
+They also are obtainable in the annealed condition for springs that have sharp bends or small spring indexes such as 5 or less.
+
+13.2 CHROME-VANADIUM ALLOY STEEL WIRE & BAR ASTM A231-41 (Wire); QQ-S-
+
+Chrome-Vanadium alloy steel wire will withstand higher stresses than Oil-tempered steel wire, but not as high as musíc wire. 
+This material is recommended for springs which are subjected to shock by impact or suddenly applied loads, and for springs which are subjected to a large number of stress cycles.
+
+13.3 SILICO-MANGANESE ALLOY STEEL BAR SAE 9260 & ASTM A59-49 (BAR)
+
+
+13.4 Chrome-SILICON ALLOY STEEL WIRE QQ-W-412, COMP 2, TYPE II; ASTM A401-58
+
+This alloy steel is especially suited for highly stressed springs subjected to shock or impact loading such as recoil springs in anti-aircraft guns and for moderately elevated temperatures. 
+It may be obtained in the oil-tempered condition, but has most often been used in the annealed condition and then hardened and tempered to quite high hardness after coiling.
+
+
+
+14. CORROSION RESISTING STEEL WIRE
+
+14.1 GENERAL. 
+
+Corrosion resisting steels are especially useful in applications involving corrosion and high temperatures. 
+The 300 series “13-3” chromium-nickel austenitic types are USual]yused up to abOUt~G inch diameter and the 400 series chromium martensitic
+&WS for larger s*. 
+The 800 series ‘18-8” types are hard-drawm to high tensile strengths and cannot be hardened by heat treatment. 
+The 400 series martensitic types are usually used in the annealed condition and then hardened and tempered after coiling. 
+The 300
+series are non-magnetic in the fully annealed condition only — hard drawing to obtain spring qualities cause some magnetic ability which cannot be totally removed. 
+The 400 series are magnetic and should not be used at sub zero temperatures. 
+Passivating or immunizing by dipping in a 20 b 409b solution of nitric acid after fabrication is desirable for flat strip, but is frequently omitted on springs made of round wire.
+
+
+14.2 CORROSION-RESB~G STEEL WIRE QQ-W+i23, Composition FS 
+
+
+
+14.3 CORROSION-RESISTING STEEL WIRE QQ_W42S, Composition I?S SO& Condition B; AXSI804; SAE 80804
+
+
+
+14.5 CORROSION-RESISTING STEEL WIRE 17-7 PH
+
+
+
+15. COPPER-BASE ALLOYS
+
+15.1 GENERAL.
+
+Copper-base alloys combine good electric properties with excellent corrosion resistance. 
+Although more expensive than steel they find many uses in electrical components and are mcellent at sub zero temperature applications. 
+All are non-magnetic.
+
+
+
+16. NICKEL-BASE ALLOYS
+
+16J GENERAL. 
+
+Nickel-base alloys have excellent corrosion reaisk combined with ability to withstand both ekvated and belowzo temperati application Nao, their non-magnetic dmmctmktic ia important for such devices as em _CMCOPM and indicating @tmments. 
+These materials have high ektrid reaktance and should not be used for conductors of electrical Clurenk
+
+
+
+17. STEEL STRIP, HIGH CARBON
+
+17.1 GENERAL.
+
+Several types of flat cold rolled steel strip with different ranges of carbon content, tempers, finishes and edges are obtainable, but only two types are readily available.
+These two types are used for over 95 per cent of all applications reqairing steel strip. 
+Thin sections of high hardness (over Rockwell "C" 43) are highly susceptible to hydrogen embrittlement resulting from electroplating or pickling operations. 
+These materials are used for mainsprings in clocks and timing devices; for constant force springs, clips and stampings. 
+For general information see Spec. MIL-S-17919.
+
+
+17.2
+
+
+
+17.3 
+
+
+
+Table I. Preferred sizes for spring materials wire diameters, strip thickness and bars
+
+
+Note 1. Square sizes of wire and bars are obtainable in preferred fractional sizes as follows: 1/32, 1/16, 3/32, 1/8, 5/32, 3/16, 7/32, 1/4, 9/32, 5/16, 3/8, 7/16, 1/2, 9/16, 5/8, 11/16, 3/4, 13/16, 7/8, 15/16, 1, 1 1/16, 1 1/8, 1 3/16, 1 1/4,  1 5/16, 1 3/8, 1 1/2, 1 5/8, 1 3/4, 1 7/8 and 2 in.
+
+Note 2. Music wire and Valve spring quality wire are available in round sections only.
+
+Note 3. Music wire is drawn to American Steel Wire \& Music Wire Gage and to special gages. 
+Steel wire is drawn to U.S. Steel Wire Gage (same as Washburn \& Moen Gage). 
+Copper and Nickel Alloys are drawn to the American Wire Gage (same as Brown \& Sharpe Gage).
+
+
+
+20. Spring Design
+
+20.1 General
+
+The proper design of springs requires an understanding of
+
+1 - spring materials,
+
+2 - design formulas and stress analysis,
+
+3 - manufacture.
+
+Various aids to designers are available including special spring slide rules, tables of constants, curves, charts and nomographs.
+All are helpful, but an understanding of the basic fundamental formulas and experience in their use is essential to good design. 
+Except for a few sizes of valve and die springs, there are very few springs manufactured for stock because of the infinite variety of characteristics involved.
+Utmost care in their design and manufacture and thorough analysis of service conditions are required for satisfactory performance.
+
+20.1.1 Purpose
+
+The purpose of this section is to describe the design methods used for each type of spring commonly used.
+
+20.1.2 Scope
+
+The data in this appendix are sufficient for general design purposes, and is not intended to include information for unusual designs or seldom used types of springs.
+
+20.1.3 Abbreviations and Symbols
+
+The following abbreviations and symbols are used throughout the appendix, unless otherwise noted:
+
+$A$ = constant, for rectangular wire.
+
+$B$ = constant, for rectangular wire.
+
+$b$ = breadth or width, in.
+
+$C$ = spring index = $D/d$.
+
+$CL$ = compressed length, in.
+
+$D$ = mean coil diameter, in.
+
+$d$ = diameter of wire or side of square, in.
+
+$E$ = modulus of elasticity in tension, psi.
+
+$F$ = deflection, for $N$ coils with load $P$, in.
+
+$F^o$ = deflection, for $N$ coils, rotary, deg.
+
+$FL$ = free length, unloaded spring, in.
+
+$f$ = deflection, for one active coil, in., at load $P$.
+
+$G$ = modulus of elasticity in torsion, psi.
+
+$ID$ = inside diameter, in.
+
+in. = inch.
+
+$K$ = curvature stress-correction factor 
+
+$L$ = active length subject to deflection, in.
+
+$l$ = length, in.
+
+lb = pound
+
+$M$ = bending moment, in. lb.
+
+$N$ = total active coils
+
+$n'$ = vibration per minute.
+
+$OD$ = outside diameter, in.
+
+$P$ = load, lb.
+
+$P_1$ = applied load, lb (also $P_2$, etc.)
+
+$p$ = pitch, in.
+
+psi = pounds per square inch.
+
+$R$ = distance from load to central axis, in.
+
+$r$ = spring rate, load per in, lb/in.
+
+$r_t$ = spring rate, inch lbs per deg. (Torsion springs).
+
+$S_b$ = stress, bending, psi.
+
+$S_t$ = stress, torsional, psi.
+
+$S_it$ = stress, torsinal, due to intial tension, psi.
+
+$SH$ = solid height, in. (or $SL$ = solid length).
+
+$s$ = height, load is dropped, in.
+
+$T$ = torque = $P$ x $R$, lb. in.
+
+$TC$ = total coils.
+
+$t$ = thickness, in.
+
+$U$ = number of revolutions = $F^o$ / 360
+
+$W$ = weight, lb (also applied dynamic load).
+
+x = multiplied by
+
+$Y$ = constant, for coned disc (Belleville) springs.
+
+$Z_1$ = constant, for coned disc (Belleville) springs.
+
+$Z_2$ = constant, for coned disc (Belleville) springs.
+
+$\alpha$ = alpha, angle of movement, deg.
+
+$\pi$ = pi, 3.1416, in.
+
+$\sigma$ = sigma, Poisson's ratio, 0.3 for steel
+
+Page: 59
+
+21. COMPRESSION SPRINGS
+
+21.1 DESIGN FORMULAS. 
+
+The design formulas in Table II are used in the design of helical compression and extention springs.
+Note that the same formulas apply to both types of springs. 
+The formulas in Table III are for determining compression spring dimensions only.
+
+21.2 Compression Spring Ends. 
+
+Figure 3 illustrates the types of ends on compression springs. Their characteristics follow:
+
+(a) Open Ends Not Ground; 
+
+also called Plain Ends, has the largest eccentricity of loading. 
+These are used only when accuracy of loads is not important. 
+This type is seldom used because such springs tangle severely during shipping.
+
+(b) Closed Ends Not Ground; 
+
+also called squared ends, cost approximately the same as open end type and have less eccentricity.
+This type is often used on light wire springs under 1/32 in. dia wire and for heavier wire where the index exceeds 13.
+
+(c) Open Ends Ground; 
+
+also called Plain Ends Ground, are seldom used as they cost about the same as the closed ends ground, but have high eccentricity of loading and tangle during shipping. 
+They are sometimes used where the solid height iS very limited and it is necessary to have as many active coils as possible in the least space.
+
+(d) Closed Ends Ground; 
+
+also called Squared and Ground, is the most popular type as it provides a level seat and reduces the tendency to buckle. 
+This is the most expensive type and should be avoided for springs made from very light wire. 
+Each end coil is ground for 270$^o$ plus or minus 30$^o$.
+
+21.3 DIAMETER CHANGES IN COMPRESSION SPRINGS.
+
+When a helical compression spring is compressed an increase in the outside diameter occurs because the angularity of the coils changes so that it is nearly at a right angle to the axis. 
+The outside diameter, when the spring is compressed solid, can be obtained from the following formula:
+$$ OD_c = \sqrt{D + \frac{p^2 - d^2}{\pi^2}} + d$$
+
+In which:
+
+$OD_c$ = outside diameter at solid length
+
+$p$ = pitch, at free length
+
+$D$ = mean coil diameter at free length
+
+$d$ = wire diameter
+
+# Table II. Formulas for compression springs and extension springs without initial tension
+
+# Table III. Compression spring formulas for dimensional characteristics
+
+# Figure 31. 
+
+21.4 BUCKLING. 
+
+Compression springs having a free length greater than four (4) times their mean diameter become critical in lateral stability. 
+When deflected beyond a certain percentage of the free length a spring will buckle. 
+Figure 31 shows the maximum deflection which may be expected without buckling if the ends of the spring are closed and ground. 
+Buckling can be reduced, space permitting, by a redesign using a heavier size wire and increasing the diameter of the coil. Buckling causes an undesirable reduction of the load and may cause early spring failure. 
+If properly guided in a cylinder or over a rod, buckling can be reduced, although friction against the guiding member will affect the load and shorten the spring life.
+
+21.5 DIRECTION OF HELIX.
+
+Unless functional requirement dictate a definite direction, the helix of compression and extension springs should be specified as optional. 
+To prevent intermeshing of coils when springs operate one inside the other (see Figure 33), the helixes should be specified as opposite hand. 
+For the same reason, springs which operate to slide freely over screw threads should have the helix specified opposite to that of the screw threads, but when a spring screws onto the threads of a screw or bolt, it should have the same helix as that of the screw or bolt.
+
+21.6 NATURAL FREQUENCY, VIBRATION AND SURGE. 
+
+The use of springs for loads which are applied dynamically, i.e., with impact or rapidly repeated will be in error if the spring is designed on the basis of static or slow loading. 
+The load, stress, deflection, etc., will have been cahxdated for applications where the load is applied and held, or the
+rate of bad application is below the natural fmUm Of the spring. 
+Because of the inertia effect of the coils in instances where the load is suddenly applied, the load on the spring does rmt have time to distribute itself uniformly throughout the mass of the spring. 
+This non-uniform loading uwes deflection or a surge ~ve (- Fi@re 32) in a few coils of the spring which results in a high stress in this area and a lower stress in the remainder of the spring. 
+In applications of high rate of repeated loading, nonuniform load distribution occurs in the same manner as suddenly applied loads and ths natural frequency of vibration Of Me sPAnr xnaYbe excited. 
+The excitation of the natural frequency of vibration, in some instances, may be of such nmgni~de ~ ~ CSU* th~ spring coils to clash causing the spting to destroy its constraint on the mechanism.
+This is known as spring surge.
+
+The following methods may be employed to prevent spring surging:
+1. stiffen spring
+(a) Increase diameter of wire
+(b) D~e mean diameter of
+spring
+(c) Decrease number of coils
+(d) Use square or rectangular wire
+2. Use spring nests
+3. Use conical spring
+4. Reduce or vary the pitch of the coils near the end of the spring
+5. Use stranded wire springs
+
+Formulas for natural frequency of steel springs follow:
+
+
+If the frequency of the spring and its harmonics are too low, the spring will surge causing the coils to clash. 
+In general, if the natural frequency of the spring is at least thirteen times that of the maximum frequency of the applied load, the design should be satisfactory.
+
+21.7 IMPACT
+
+
+21.8 SPRING NESTS. 
+
+The nesting (one in side the other) of helical compression springs (s* Figure 33) is a method of obtaining maximum energy storage in a limited space.
+It is desirable to design the spring for equal life with 60 to 70 percent of the load on the outer spring. 
+Maximum energy storage is obtained in a spring nest when the value of the spring indexes are between 5 and 7, when solid lengths of all the springs are approximately the same and when the working stroke (I& - L1) is of constant magnitude.
+The percentage of stress reduction obtained with nested springs is directly proportional to the spring index of the single spring when considering a constant working stroke.
+Not only is a reduction in the ha) stress obtain@ but the use of nested springs eff~ a similar Auction in the stress range. 
+Figure 34 shows the variation of the perurata~ m duction in the final stress and stress range with respect to the spring index of the single spring. 
+The gmph is based on the conditions &at the nested springs and the single spring have ths wvne vaiueg for:
+
+(a) Active solid height H,
+(b) Load-defktioa rate R
+(C) Find Load P,
+(d) Modulus of torsion G
+(e) OD D
+
+The OD of single spring equals the OD of outer spring in nested design.
+
+
+21.9 COMPRESSION SPRING USED AS AN EXTENSION SPRING. 
+
+Occasionally certain applications require the action of an extension spring; but the use thereof would produce excessive deflection. 
+
+This deflection would result in serious distortion, or set, of the extension spring and impairment of its fastetigs (hooks). 
+
+Under such circumti~ a compression spring can be used to produce the same action (See Figure 35).
+
+Such a device aa a through bolt and washer, or a yoke-like drawbar can be utilized, resulting in a spring mount that has the carrying capaci~ and safety (by virtue of its definite solid length) of a compression spring.
+
+
+
+21.10 SPRING INDEX (D/d).
+
+The spring index is the ratio of the mean coil diameter of a spring to the wire diameter (D/d). 
+
+This ratio is one of the most important considerations in spring design inasmuch as the deflectio~ stms~ number of coils, and selection of
+either annealed or tempered material depends to a considerable extent upon this ratio. 
+The best proportioned springs have an index of 7 to 9. 
+
+Ratioaof 4t07and9t016 are often used. 
+
+Springs with values larger than 16 require more than standard tolerances for manufacturing; those with values less than 5 are difficult to coil on automatic coiling machines.
+
+
+21.11 CURVATURE STRESS-CORRECTION FACTORS. 
+
+
+
+
+EXAMPLE. If a spring with an index of 7.4 has a torsional kress S, of 80,000 psi, what is the total stress in the spring? 
+
+From tie table it will be found that K equals 1200; therefore the total stress equals 80,000 times 1200 = 96,000 psi. 
+
+This is the stress that should be compared with allowable stresses to determine whether or no tthe spring is safely design~ and is the sole use made of such data.
+
+In designing a spring it should be borne in mind that the total stress, as determined by this method, should not be used in calculating the defection or number of coils. 
+The torsional stress S_t = PD/0.393 d^3 or S_t = G d F/pi N D^2 should be utilized for such purposes.
+
+
+
+
+
+21.12 KEYSTONE EFFECT.
+
+When square wire and rectangular wire are coiled into springs, a change in shape occurs. 
+This change takes place because some of the material on the outside diameter is drwan into the spring and the material on the inside diameter upsets, thereby changing the wire into a trapezoidal section. 
+The original thickness of the wire is maintained at or near the mean diameter of the coil.
+It is necessary to take into account this upsetting of the material in determining the solid height of the spring. 
+This dimensional change depends upon the spring index and the thickness of the material and may be determined by the following formula:
+$$ t' = 0.48t \left( \frac{OD}{D} + 1 \right) $$
+where
+$t' = $ new thickness of inner edge after coiling
+$t$ = thickness before coiling
+
+
+
+
+
+21.14 PRECAUTIONS AND SUGGESTIONS POR EFFECTIVE DESIGN OF COMPRESSION SPRINGS.
+
+(a) Comp-on 8P* ordinarily 8hOdd not be permitted to m solid; e%cep tionaounrwhentheyare~-b~n
+
+(b) Wkwver pmcticab~ Springs 8hould bedeaigneda othatift heywerecompreaaed ta ti solid length the corrected streaa still would not exceed the minimum elastic limk
+
+(c) The kagth of a Compdon sp~ at maximum working defktion must not be bocloee titbeaol.id kngthbsminhmmu 8 ckrance Oflo%of thwire diameter ahoaldexiat between the coils.
+
+(d) The selection of springs for continuous cycling should be made so that the stress range
+
+(MAX STRESS — MIN STRESS) / MAX STRESS
+
+will be as small as possible consistent with other design requirements.
+
+
+(e) T%e ou&de diametir of a compw aion spring when coznpres8d solid must be kss than the minimum hole diameter, if the spring operates in a hole When operating over a guide the minimum inside diametxw must k hrger than the _um di~et~ of the guid=
+
+(f) The poaai%flity of buckling should be investigated and guides used if neceswwY.
+
+(g) We compeaaion8P* in preferencetoother~~tieym eaaier toprOdu~ k expensive and have a deflection ljniting feature in the did_
+
+(h) The best proportioned springs from the standpoint of manuf-re ~d d~i~ have a spring index between 7 and 9, although indexes of 5 to 16 are commonly used.
+
+(i) For indexes less than 5 in the larger
+
+
+
+
+
+
+21.17.1 Necessity for Several Calculations.
+
+Frequently the first set of calculations does not result in a satisfactory design for the conditions involved. 
+
+It is usually necessary to make several sets of calculations before determining the final design. 
+
+This often is caused by a stress that is too high, a difficult index for manufacture, or a length that would buckle and require support in a tube or over a rod.
+
+21.18 STRANDED WIRE HELICAL COMPRESSION SPRINGS.
+
+21.18.1 General. 
+
+Helical compression springs made from standard wire have an inherent tendency about twice as high as round wire springs to dampen high velocity displacement of their coils under shock loading. 
+
+Under such conditions of loading, they have withstood 3 to 4 times as many deflections as round wire springs having the same load deflection and stress conditions, before failure. 
+
+For this reason, they have been used for machine guns. 
+
+They do not have longer life than round wire springs under normal types of load applications. 
+
+Good results have been obtained by using three strands of music wire twisted so that the ratio of length
+of lay to the strand diameter is betwwn 5 and 51\z.
+
+The length of lay is the distance parallel to the strand axis in which a single wire makes one turn. 
+
+Preforming the wire by twisting it slightly just prior to the actual stranding operation helps to keep the strands tightly together. 
+
+Corrosion resisting steel wire also could be used, Springs with an index D/d of 13 can be coiled on automatic spring toilers, but springs with a smaller index usually require coiling over an arbor.
+
+Shot peening is not recommended as the small shot lodges tightly between the strands and is difficult to detect and remove.
+
+
+
+21.18.2 Stress. 
+
+High stresses are used in design.  
+
+The following stresses have been used at solid length; for music wire .030 in. dia 170,000 to 195,000 and for music wire .070 in. dia 150,000 to 170,000 psi.
+
+
+21.1S.3 Formulas for 3 Stranded Wire Spring Design Follow: 
+
+The S, and d values are for each strand of wire, and P is the actual load on the spring.
+
+
+# Page 76:
+
+22. EXTENSION SPRINGS
+
+22.1 DEFLECTION OF EXTENSION SPRING ENDS. 
+
+Loading an extension spring having hook (loop) ends causes the hooks to deflect.
+The amount of this deflection depends on the type of hook used. 
+For a half hook the deflection per hook is equivalent to .1 of a full coil and the total number of active coils for design purposes will be N + .2.
+When a full hook is turned up from a full coil, the deflection per hook is equivalent to .5 of a full coil and the total number of active coils for design purposes will be N + 1.
+
+22.2 STRESSES IN HOOKS OF EXTENSION SPRINGS. 
+
+The hooks at the ends of extension springs are subjected to both tension (bending) and torsional stresses. 
+See Figure 43. 
+These combined stresses are frequently the limiting factor which determines the characteristics of the spring. 
+These stresses occur at the base of the hooks and their magnitude is higher than the stress in the body. 
+Therefore this is the weakest point in an extension spring and the stresses shoud be calculated. 
+The allowable working stresses should not exceed those shown in the curves, Figure 62, Section II of this Appendix, if long life is required.
+
+Bending Stress at Section A
+$$ S_b = \frac{PR}{.098 d^3} \times \frac{r_1}{r_3} $$
+
+Torsional Stress at Section A'
+$$ S_t = \frac{16 P R}{\pi d^3}  \times \frac{r_2}{r_4} $$
+
+Where:
+
+$r_1$ = Mean Radius of Hook, in.
+
+$r_2$ = Mean Radius of Bend, in.
+
+$r_3$ = Inside Radius of Hook, in.
+
+$r_4$ = Inside Radius of Bend, in.
+
+For best results the inside radius should be at least twice the wire diameter. 
+Special ends can be used when high stresses occur in the hooks. 
+By using a smaller diameter for the last few coils, see Figure 44, before the loop, the magnitude of $PR$ is reduced. 
+Thus the stress is reduced in direct proportion to the decrease in the magnitude of $PR$. 
+By using as large radii for $r_3$ and $r_4$ as the design will permit the stress value is further reduced.
+The values of $r_3$ and $r_4$ can be determined by layout.
+
+In extension springs with hooks bent off the body (see Figure 6, Off-set hook at side) the moment arm of the load on which the maximum torsion stress in the spring depends is about twice what it would be if the load were applied axially. 
+This means doubling the stress for a given load.
+
+22.3 INITIAL TENSION.
+
+Initial tension is a load in pounds which opposes the opening of the coils by an external force. 
+It is wound into the springs during the coiling operation.
+Extension springs will have a unifom rate after the applied load overcomes the load due to initial tension. 
+The number of coils do not affect the amount of initial tension except when the weight of the coils is heavier than the initial tension. 
+The amount of initial tension is dependent on the spring index (D/d); the smaller the index the larger the initial tension. Initial tension does not increase the ultimate load or capacity of the spring but causes a larger portion thereof to be exerted during the initial deflection. 
+For example, if the initial tension is 4 lbs and the spring rate is 9 lb then, at 1 inch deflection the load is
+
+(1 \times 9) + 4 = 13 lb
+
+3-inches deflection the load is
+
+(3 \times 9) + 4 = 31 lb
+
+In computing the total torsional stress add the torsional stress caused by initial tension to the torsional stress caused by deflection.
+Figure 45 shows the amount of initial tension in terms of torsional stress (without application of curvature stress correction factor) which can be coiled into extension springs made of music wire, oil tempered, corrosion resisting steel and hard drawn spring steels.
+Reduce these values 20 percent for springs made from nickel-base alloys such as Monel and Inconel. Hot rolled springs and those made of annealed materials cannot be wound with initial tension.
+Springs which require stress relieving will lose 25 to 50 percent of their initial tension.
+This loss can be compensated for during the coiling operation by winding more initial tension into the spring and thus obtain the required tension after stress relieving.
+
+# Page 84:
+
+22.4 EXAMPLE OF EXTENSION SPRING CALCULATION.
+
+An extension spring is required to exert a force (load)  of 27 lb at 2 in. defection and be deflected an additional 3 in. (5 in. total) and then exert a total load of 55 lb. 
+It must operate within a 1.812 in. minimum diameter bore.
+
+Select a suitable oil tempered wire diameter and determine the number of coils, length over coils, free length inside ends, maximum extended length inside ends without set, stresses at all loads, etc., stressed for light service (see Figure 62).
+
+
+
+# Page 88:
+
+22.5 PRECAUTIONS AND SUGGESTIONS FOR EFFECTIVE DESIGN OF EXTENSION SPRINGS
+
+(a) Avoid using enlarged, extended, or specially shaped hooks or loops; they may double the cost of the spring and have high stress concentrations.
+
+(b) If a plug must screw into the end of a spring, the spring should be coiled right hand.
+
+(c) Nearly all extension springs are wound with enough initial tension to keep the spring together. Always figure on at least 5 to 10 percent of the final load as initial tension, unless otherwise specified.
+
+(d) Electroplating does not deposit a good coating on the inside of, or between the coils of extension springs.
+
+(e) Hooks on extension springs deflect under a load.
+Each half hook, made by bending one-half of a coil, deflects an amount equivalent to 0.1 of an active coil.
+Allowance for this deflection should be considered in design.
+
+(f) If the relative position of the ends is not important note this fact on the drawing.
+
+(g) For standard hooks keep the OD of the hook the same as the OD of the spring, and the distance from the end of the body, or from the last coil, to the inside of the hook about 75 to 85 percent of the ID of the spring.
+
+(h) The body length or closed portion of an extension spring equals the number of coils in the body plus one, multiplied by the wire diameter.
+
+(i) When deflected 1 1/4 times the maximum deflection as assembled, the total stress should be less than the Minimum Elastic Limit shown by the curves in Figure 62, as modified by their multiplying constants.
+
+
+22.6 GARTER SPRINGS
+22.6.1 GENERAL.
+
+Close coiled extension springs used in the form of rings by connecting the ends are often used as driving belts, for oil seals and as retainers.
+The ends may have half or full loops and then be hooked together or one end may be reduced in diameter for three to six coils and screwed into the other end. 
+Connecting the ends with a separate short section, called a connector, is occasionally done.
+
+
+
+# Page 89:
+
+23. TORSION SPRINGS
+
+23.1 DESIGN FORMULAS. 
+
+The stress in helical torsion springs is a bending or tensile stress. 
+
+The stress caused by a load should be compared with the elastic limit in tension of the material to determine the allowable stress. 
+
+Comparison should also be made with the curves of allowable stresses (corrected for torsion springs) as shown in Figure 62, Section II, of this Appendix. 
+
+In Table VII for helical torsion springs two formulas are listed for each property. 
+
+Either may be used; one is based on load P, the other on deflection F“, and the results should be the same.
+
+23.2 STRESSES IN TORSION SPRING ENDS. 
+
+Frequently the limiting stress value in helical torsion springs is the stress value in the ends. 
+
+When a helical torsion spring has an eye as in Figure 46, or bent off the coil as in Figme 47 the stress at the inside of the bend is a tensile stress. 
+
+The sharp mmvature causes the neutral axis to move inward toward the center of the curve and the tensile stress becomes that of a cantilever loading multiplied by a co~tant (K). 
+
+The formula for determining the stress in the bend of the eye in Figure 46 follows:
+
+For the determination of K from Figure 51 in this instance D = 2 times the inside radius of the bend.
+
+
+
+23.3 DEFLECTION OF TORSION SPRING ENDS. 
+
+When the length of the material in the arms of a helical torsion spring approaches the length of material in one coil, the deflection of the arms will cause the deflection under applied loads to be in error (See FIgure 48.) 
+
+Such ends deflect M a cantilever and may be calculated as such or & formula for 8pring rate including arms may be used.
+
+
+
+
+
+23.4 CHANGE IN DIAMETER AND
+LENGTH. 
+
+When a helical tmsion spring is deflected a reduction in diameter and an increase in length occm In order to prevent binding or scufling, which reduc& alife auflkient space must be provided when opmting wer a rod or in a cylinder. 
+
+The new inside diameter IDl in a helical torsion spring due to deflection is obtiined by the formula shown in Teble VII. 
+
+The shaft diame@r should be slightly less than the calculated diameter to prevent binding and distortion in servica 
+
+The change in length is due to the increase in the number of coils at the detkctzd positiom if a helical torsion spring makes one complek revolution the increase in length is equal to one thickness of wire, plus an allowance for the space between coils if any.
+
+
+23.5 HELIX OF TORSION SPRINGS.
+
+The hand or direction of coiling (helix) should always be specified for torsion springs.
+ 
+A torsion spring should be so designed that the applied load tends to wind up the spring and increase its length. 
+
+In springs operating under high stress it is desirable to design the springs with open coil A “slight space of about %4 inch or 20 to 25 per cent of the wire diameter will eliminate friction between coils d reduce stress concentration which will lengthen the spring life. 
+
+When long helical torsion springs are used there exists the possibility of buckling. 
+Since buckling will cause ab=ion betwen coils, erratic loads and early spring failure, it should be avoided.
+
+Buckling may be reduced in varying amounts by providing some means of lateral support such as:
+
+1. Mounting the spring over a rod or guide.
+2. Mounting the spring in a tube.
+3. Clamping the ends.
+
+
+
+23.8 HELICAL TORSION SPRING CALCULATION.
+
+The stress in a helical torsion spring is normally a bending stress (tension) and for this reason E is used in the formulas.
+
+Tables and nomographs of characteristics for helical torsion springs aid in design. 
+
+The wire diameter also can be obtained by solving an equation as in the following example.
+
+23.8.1 Example. 
+
+A torsion spring made of corrosion resisting steel Type FS 302 is required to exert a load of 9 lb at the end of a 2 in arm of the spring (measuring from the center line of the spring to the point of contact) at 100 degrees of deflection; the ID
+being 1 1/4 in. 
+
+Select a suitable wire diameter for average service and determine the number of coils, body length, etc. (assuming that the stress for average service from Figure 62 for torsion springs may be equal to 120,000 psi max)
+
+Theoretical wire diameter d,
+
+
+
+
+
+23.9 PRECAUTIONS AND SUGGESTIONS FOR EFFECTIVE DESIGN OF HELICAL
+TORSION SPRINGS.
+
+
+
+24. SPIRAL TORSION SPRINGS
+
+
+24.1 GENERAL. 
+
+A spiral torsion spring delivers torque at its inner end to the shaft on which it is mounted and to the part on which its outer end is fastened.
+
+
+24.2 STRESS. The dress is in bending and should be compared with the elastic limit in tension of the material to determine the allowable stress. 
+The recommended allowuble stress for thickness under .060 inch k 175,000 psi and for heavier sizes 150,000 psi for commercial spring steels. 
+
+Lower stresses will increase fatigue life.
+
+24.3 ENDS. 
+
+A variety of end shapes can be used. 
+
+Inner ends usually are bent to fit in a slot. 
+
+Outer ends usually are formed to fit over a bolt or pin.
+
+25. CONSTANT FORCE SPRINGS
+
+
+25.1 GENERAL.
+
+These springs have an appearance similar to clock or motor springs but sre wound so that a constant force P causes a continuous unwinding of the coils.
+
+The springs are made fmm a strip of flat spring material which has been given a curtitum by continuous heavy forming so that in its relaxed condition it is in the form of a tightly wound spiral. 
+
+In Figure 56 the outer end has been extended by a constant force P and each incremental part of the straightened portion L has km deflected from its natural curvature in passing through the working zoneX. 
+
+The force P at any extension is determined only by the work required to straighten the material in zone X from its natural curvature in its coiled condition. 
+
+The constant force giving a zero rate or gradidnt =n be changed during manufacture to make springs with a slightly altered rate; thereby producing springs with a small negative, positive or changing rate if desired, but the zero rate has the broadest practical application possibilities. 
+
+Such springs should have widtl& equal to 6 to 200 times (250 xnax) their thickness to have good stability, (100 times thickness is often used). 
+
+They are not generally used in elevated temperatures over 140 degrees F.
+
+Most applications are for the extension type, but these springs also may be used as motor springs to turn rollers at a constant torque.
+
+
+252 MATERIALS. 
+
+The two most generally used spring materials and method of specifying them on drawings follow: 
+STEEL, SPRING, TEMPERED, BLUE, SAE 1095, NO. 1 EDGE HARDNESS RANGE RC 48 to 51 and STEEL CORROSION RESISTING AISI 302 3/4 HARD. 
+
+Other materials are used if essential to design requirements. 
+
+In specifying the length any additional material for forming special loops or straight portions should be added to the length determined by the formulas.
+
+If in a formula for thickness t, the result derived is an odd sise such as .0096 inch, the next standard larger thickness such as .010 ~ should be used.
+
+25.3 INNER ENDS. 
+
+Normally the inner end of a constant force extension spring is held to the roIhMby ita natural gripping actiou when about l% turns of material remain on the roller at full &Mectiom 
+
+No other fastening is mquire& exeept where them is some tendency for the _ to be wound ointo the roller in improper alignment or if danger
+of overtravel exist& In such cases the inner endmaybe bentand insertdinto aslot in the dler, or retahed by a small upset hock or held by a small screw. 
+
+Inner ends held by screws should be recesMMand amki iII a manner to prevent the screw head fbm dforming the mkxral curvature of the sp~o
+Flanges ondera also aid in guiding the flow of the material ontn the rollexa.
+
+
+25.4 OUTER ENDS.
+
+Outer ends usually have round orpearahapedhol-to fit over a screw. 
+
+These ends may be left square, roundOdertl’immdt isukmeendsalso may be annealed and bent to form 8 bOp and th= riveted$ for mounting Omr pins. 
+
+The outer ends normally follow the regular curvature Ofthe$pring diamabr, but they -y, if daird b lnanufactumd With a preformed atl’a@t end b facilitate attachment.
+
+25.5 MULTIPLE MOUNTING. 
+
+Two springs
+
+
+
+Page 114:
+
+Appendix A, Section III
+
+30. Spring Manufacture
+30.1 General
+
+Information on only a few operations is essential for design purposes.
+
+31. Stress Relieving
+
+The usual types of hardening and tempering ovens are used for stress relieving. 
+Springs made from prehardened wire such as Music Wire, Oil Tempered, Hard Drawn, Corrosion Resisting 18-8 and similar materials are stress relieved by heating at low temperatures from 400 to 650$^\circ$ F. to reduce the residual stresses trapped in the wire during the coiling operation.
+Springs made from annealed wire are hardened and tempered in a manner somewhat similar to tool steel. 
+Precipitation hardening materials such as Beryllium-Copper, K-Monel, Inconel X, 17-7 PH and others are heated at varying temperatures, depending upon composition, for extended times from 1 hour to 16 hours.
+
+32. Cold Set to Solid
+
+This process is used to stabilize the free length of a compression spring, so that subsequent inadvertent or intentional compression to solid height will not change the loads at working deflections.
+
+(a) If a compression spring is designed so that the elastic limit is not exceeded when the spring is compressed to solid height, no appreciable permanent set will occur, other than removal of small kinks in the wire. 
+The note "Cold Set to Solid" should be specified on the drawing of such springs.
+
+(b) If a spring is designed so that the elastic limit is exceeded when the spring is closed solid, permanent set will occur and the free length will be decreased.
+Residual stresses of opposite sign will be set up in the wire when the load is released, so that if the spring again is closed solid it will withstand a higher calculated stress than the stress corresponding with the elastic limit.
+If the initial free length of the spring is made greater than the calculated free length by the proper amount, overstressing the spring beyond the elastic limit by compressing it to solid height will stabilize the characteristics and produce the desired loads at working deflections. 
+Additional cycles of compressing the spring to solid height and releasing the load will not further change the free length. 
+However, there is a limit to this process. 
+After a certain initial free length has been reached for a particular spring, the final free length after compression to a solid height will remain constant no matter what increases are made in initial free length.
+
+(c) When a spring is designed so that the stress at solid height is so far above the elastic limit that the spring will not have the desired loads at the working deflections if cold
+set to solid, the note "Shall compress to .....in. without permanent set" should be placed on the drawing. 
+The computed stress at the specified length (equal to, or less than, the final assembled length) must be less than the stress at the elastic limit. 
+Whenever practicable, this design of spring should be discarded in favor of a spring having a solid stress within limits that will permit closing solid without permanent set.
+
+Several methods may be used to cold set to solid. 
+Small air presses and foot presses can be used for light springs, power presses, and specifically built motorized equipment for larger springs, and hydraulic presses for
+heavy springs. 
+Light springs also may be compressed by hand over close fitting arbors.
+
+33. Grinding
+
+End coils of compression springs are ground whenever it is necessary for the springs 1. to stand upright, 2. to obtain a good seat against a contacting part, 3. to reduce buckling, and 4. to cause the springs to exert more uniform pressures under a diaphragm or against a mating part. 
+This operation is expensive and should be avoided wherever it is practicable to do so especially on light springs with wire diameters under 1/32 inch and where a large spring index ratio (OD/d) prevails, such as 13 or larger.
+Several types of disc grinding machines are available.
+The small disc grinders using paddles to hold springs for grinding are especially useful for small production runs from 100 to 5000 or more springs.
+Grinders with horizontal "ferris wheel" methods of loading are useful for larger quantities of light springs using wire diameters up to about 3/32 inch.
+Heavier sizes may be ground in disc grinders with vertical ferris wheels.
+
+Page 115:
+
+34. Shot Peening
+
+Spring life can be increased at least 30 per cent and has often been incressed from two to ten times by shot peening.
+This process may be applied to all highly stressed springs made from steel and non-ferrous materials usually over 1/16 inch wire diameter.
+Extension springs and closely wound torsion springs are difficult to shotpeened becasue the tiny steel shot if frequently trapped between the coils and is difficult to remove.
+The large increase in fatigue life of helical springs due to shot peening is accomplished by a combination of effects:
+
+(a) Small surface irregularities seen only by the microscope are hammered smooth.
+
+(b) The surface of the wire is thoroughly cleaned, and sharp burrs are made dull.
+
+(c) This additional cold work hardens the surface of the wire and raises the physical properties where the stress is the highest.
+
+(d) Cold forging traps beneficial compression stresses near the wire surface which must be overcome by the destructive tensile stresses that cause fatigue failure before breakage can occur.
+All heat treating of springs and all stress-relieving processes should be done prior to shot peening, except in those instances where electroplating is used; it is then necessary to reheat after plating.
+Heating the springs above 500$^\circ$ F after shot peening counteracts much of the beneficial effects of the trapped compression stresses produced by shot peening.
+
+Springs made from annealed, oil tempered or alloy steels that must be electroplated can be shot peened principally to clean the surface, thus avoiding the necessity of soaking them in acid solutions to remove scale.
+The slightly roughened surface of shot peened springs does not produce a bright glossy, electroplated coating.
+
+35. Protective Coatings.
+
+Uncoated or oil dipped springs are satisfactory where corrosive conditions are not a factor.
+Black japanning is often used as it is a flexible, inexpensive finish suitable for many applications.
+Enamels, lacquers and paint are occasionally used. 
+Cadmium with supplementary chromate treatment provides one of the best electro deposited coatings because it is both flexible and corrosion resistant.
+
+Nickel, chromium zinc and other metals are also deposited electrolytically.
+Black oxide and phosphate coatings are occasionally specified.
+Care must be used in applying coatings, first to use detergents, solvents, alkaline or vaporizing degreasers to remove oil and dirt, shotblasting or sand blasting to remove scale, and baking to remove the hydrogen embrittelement that may be caused by acid dipping or electroplating.
+
+36. Hydrogen Embrittlement.
+
+Steel, particularly hardened steel, is susceptible to embrittlement resulting from hydrogen introduced by acid pickling, electroplating, or cathodic electrocleaning operations.
+Absorbed hydrogen results in brittle behavior particularly under sustained loading in the presence of stress concentration.
+Baking to relieve hydrogen embrittled springs should be accomplished by a method similar to that specified in specification QQ-Z-325 or QQ-P-416.
+
+(a) Most hydrogen is evolved during acid pickling and can be reduced by using organic inhibitors in the solution.
+The cleaning of springs by shotblasting or by tumbling is advisable so that less time is required in the picking bath.
+
+(b)
+
+(c)
+
+(d)
+
+
+
+Table XVI. Tolerances on outside diameter for all helical springs
+
+Table XVII. Tolerances on the number of coils for all helical springs
+
+Table XVIII. Tolerances on position of arms for torsion springs (For indexes OD/d up to 16)
+
+Page 117:
+
+Table XIX. Tolerances on free length for compression springs with ends closed and ground and for accurately made extesion springs
+
+Page 118:
+
+Figure 63. Maximum Deviations Allowed On Ends of Extension Springs
+
+
+page 119:
+
+37. TOLERANCES FOR SPRINGS. 
+
+Tables that follow present tolerances which can be obtained under normal manufacturing methods. 
+Springs having closer tolerances can be produced but at greatly increased cost.
+A more liberal tolerance should be specified whenever possible.
+
+Table XX. Tolerances on squareness of grinding on end coils for compression springs
+
+These tolerances in degrees maybe reduced 50 per cent by individually grinding, measuring, testing, and sorting the springs, but this increases production time and cost.
+Grinding end coils of springs made from wire under 1/32 inch diameter is usually unnecessary and frequently is expensive.
+
+37.1 TOLERANCE ON LOADS. 
+
+The recommended tolerance on all loads is plus or minus 10 per cent and should be specified as shown on the drawing requirement charts. 
+However, when the deflection from the free length to the limit load is small, the load tolerance must be large and should be considered proportional to the tolerances that apply to the free length. 
+For example, if the deflection is only 1/8 inch and the tolerance on the free length is 1/32 inch, then it follows that the tolerance on the first load should be plus or minus 25 percent (1/32 = 25 percent of 1/8), otherwise the tolerance on the free length could not be taken.
+
+Where a specific amount of initial tension is required for extension springs, it should be specified in pounds or ounces with a recommended tolerance of plus or minus 15 per cent, but it usually is specified as a REFERENCE.
+
+Smaller load tolerances than these usually require testing and adjusting each spring and add considerably to the manufacturing time and to the cost.
+
+Page 120: 
+
+Table XXI. Table of Third and Fourth Powers of Wire Diameters
+
+Page 121:
+
+
+Table XXII. Load changes due to slight wire changes
+
+INTRODUCTION: 
+
+It is frequently necessary to make a slight change to the wire diameter of a spring, either to use a wire size available or to change the load to meet a specified requmement. 
+
+Adding only .001 in. to .040 in. wire (thereby using .041 in. instaad of .040 in.) increases the load 10 per eenk 
+
+Adding .001 in. to %6 in. wire, however, changes the load onlY2 per cenb but a .005 in. addition increases the load 10 per cent. 
+
+This data is for compression and extension springs.
+
+
+\hline
+
+
+
+Note: Changing the wire size also changes the solid height, body length, stress, etc.
+
+
+Page 122:
+
+Table XXIII. Causes of spring failure. Listed in sequence according to frequency of failure.
+
+\hline
+
+Spring failure may be cause by breakage, high permanent set or loss of load.
+Group I lists the causes that occur most frequently.
+Group II contains the less frequent causes and Group III lists causes that occur occasionally.
+
+\hline
+
+HIGH STRESS
+
+The majority of spring failures are due to high stresses caused by large deflections and high loads. 
+High stresses should be used only for statically loaded springs. 
+Low stresses lengthen fatigue life.
+
+HYDROGEN EMBRITTLEMENT
+
+Improper electro-plating methods and acid cleaning of springs, without proper baking treatment, cause spring steels to become brittle, and is a frequent cause of failure. 
+Non-ferrous springs are immune.
+
+SHARP BENDS \& HOLES
+
+Sharp bends on extension, torsion and flat springs and holes or notches in flat springs cause high concentration of stress resulting in failure. 
+Bend radii should be as large as possible, and tool marks avoided.
+
+FATIGUE
+
+Repeated deflections of springs, especially above 1,000,000 operations, even with medium stresses, may cause failure. 
+Low stresses should be used for severe operating conditions.
+
+Group II:
+
+SHOCK LOADING
+
+Impact, shock, and rapid loading cause far higher stresses than those computed by the regular spring formulas. 
+High carbon spring steels do not withstand shock loading as well as alloy steels.
+
+CORROSION
+
+Slight rusting or pitting caused by acids, alkali, galvanic corrosion, stress corrosion cracking, or corrosive atmosphere weakens the material and causes higher stresses in the corroded area.
+
+FAULTY HEAT TREATMENT
+
+Keeping spring materials at the hardening temperature for longer periods than necessary causes an undesirable growth in grain structure resulting in brittleness even though the hardness may be correct.
+
+FAULTY MATERIAL
+
+Poor material containing inclusions, seams, slivers, and flat material with rough, slit or torn edges causes early failure.
+Overdrawn wire, improper hardness, and poor grain structure also result in early failure.
+
+Group III:
+
+HIGH TEMPERATURE
+
+High temperatures reduce spring temper (or hardness), lowers the modulus of elasticity thereby causing lower loads, reduces the elastic limit and increases corrosion. 
+Corrosion resisting or nickel alloys should be used.
+
+LOW TEMPERATURE
+
+Temperatures below -40$^{\circ}$ F lessen the ability of carbon steels to withstand shock loads. Carbon steels become brittle at -70$^{\circ}$ F. 
+Corrosion resisting, nickel or nonferrous alloys should be used.
+
+FRICTION
+
+Close fits on rods or in holes results in a wearing away of material and occasional failure.
+The outside diameters of compression springs expand during deflection but they become smaller on torsion springs.
+
+OTHER CAUSES
+
+Enlarged hooks on extension springs increases the stress at the bends. 
+Carrying too much electrical current will cause failure. 
+Welding and soldering frequently destroy the spring temper. 
+Tool marks, nicks, and cuts often became stress raisers. 
+Deflecting torsion springs outwardly causes high stresses. 
+Winding them tightly causes binding on supporting rods. 
+High speed of deflection, vibration and surging due to operation near natural periods of vibration or their harmonics, cause increased stresses.
+
+
+
+Page 123:
+
+Copies of specification, standards, drawings, and publications required by contractors in connection with procurement functions should be obtained from the procuring activity or as directed by the contracting officer.
+
+Copies of this standard for military use may be obtained as indicated in the foreword to or general provisions of the Index of Military Specifications and Standards.
+
+Copies of this Standard may be obtained for other than official use by individuals, firms, and contractors from the Superintendent of Documents, U. S. Government Printing Office, Washington 25. D. C.
+
+Both the title and the identifying symbol number should be stipulated when requesting copies of Military Standards.
+
+Patent notice.
+When Government drawings, specifications, or other data are used for any purpose other than in connection with a definitely related Government procurement operation, the United States Government thereby incurs no responsibility, nor any obligation whatsoever; and the fact that the Government may have formulated, furnished or in any way supplied the said drawings, specifications, or other data is not to be regarded by implication or otherwise as in any manner licensing the holder or any other person or corporation, or conveying any rights or permission to manufacture, use, or sell any patented invention that may in any way be related thereto.
+
+Custodians:
+Army - Ordnance Corps
+Navy - Bureau of Naval Weapons
+Air Force
+
+Preparing activity:
+Navy - Bureau of Naval Weapons

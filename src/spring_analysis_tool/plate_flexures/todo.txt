@@ -1,0 +1,12 @@
+Workflow:
+use Gmsh to mesh a plate flexure
+Use open source FEM to analyze stiffness and stress
+parameterize basic set of plate flexures
+
+Documentation:
+explain uses of plate flexures:
+-linear bearings (limited axial motion)
+-springs which also provide radial constraint
+-stirling engines
+-linear compressors
+-kinematic mounts

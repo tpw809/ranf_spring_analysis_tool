@@ -40,6 +40,8 @@ Parameters:
 - corrected % of MTS at solid
 - expanded coil outer diameter at solid
 - length at buckling
+- application: static or dynamic?
+- service / life: light (10^3-10^4 cycles), average (10^5-10^6 cycles), severe (<10^6 cycles)?
 
 
 Load Case Specific Parameters:
@@ -54,6 +56,7 @@ Load Case Specific Parameters:
 - uncorrected stress
 - uncorrected stress % of MTS
 - expanded coil outer diameter
+- margin of safety (yield, ultimate, buckling, fatigue)
 
 Design Scenarios:
 
@@ -107,7 +110,7 @@ def process_helical_compression_spring_json_input(
     ###########################################
     
     # check type:
-    assert input_dict['type'] == 'helical_compression_spring', "type must be helical_compression_spring"
+    assert input_dict['type'] == 'helical_compression_spring'
     
     # get name:
     assert input_dict.get('name') is not None
@@ -138,7 +141,7 @@ def process_helical_compression_spring_json_input(
     # Number of Active Coils, N:
     N = input_dict['active_coils']
     
-    assert TC >= input_dict['active_coils'], "total coils must be >= than active coils"
+    assert TC >= N, "total coils must be >= than active coils"
     
     if verbose:
         print(f"active coils (N): {N}")
@@ -304,6 +307,9 @@ def process_helical_compression_spring_json_input(
     if verbose:
         print(f"Spring Index, C = D / d = {C}")
     
+    if C < 5.0 or C > 15.0:
+        print("WARNING: spring index outside typical range (5-15).")
+    
     ############################################
     # Other Diameters:
     ############################################
@@ -350,8 +356,8 @@ def process_helical_compression_spring_json_input(
         assert input_dict['solid_height'] < free_length
         SH = input_dict['solid_height']
     
-    defletion_at_solid = free_length - SH
-    input_dict['defletion_at_solid'] = defletion_at_solid
+    deflection_at_solid = free_length - SH
+    input_dict['deflection_at_solid'] = deflection_at_solid
     
     if verbose:
         print(f"total coils (TC): {TC}")
@@ -435,7 +441,7 @@ def process_helical_compression_spring_json_input(
         input_dict['load_at_solid_height'] = (free_length - SH) * spring_rate
     
     
-    if deflection_at_load > defletion_at_solid:
+    if deflection_at_load > deflection_at_solid:
         print("***Warning Solid Height Reached at Load***")
     
     
@@ -523,24 +529,34 @@ def process_helical_compression_spring_json_input(
     ############################################
     # Shigley 6th Ed. pg 596-597
     
-    # alpha = end condition constant:
-    alpha = 0.5
+    if input_dict.get('bukcling_info') is None:
+        input_dict['buckling_info'] = {}
     
+    buckling_dict = input_dict['buckling_info']
+    
+    # alpha = end condition constant:
     # alpha = 0.5 => supported between flat surfaces (fixed ends)
     # alpha = 0.707 => one end supported by flat, other end pivoted
     # alpha = 1.0 => both ends pivoted
     # alpha = 2.0 => one end clampled, other end free
+    if buckling_dict.get('alpha') is None:
+        alpha = 0.5
+        buckling_dict['alpha'] = alpha
+        print("setting default end condition...alpha=0.5")
     
     # lambda_eff = slenderness ratio:
     lambda_eff = alpha * free_length / coil_mean_diameter
-    input_dict['slenderness_ratio'] = lambda_eff
+    buckling_dict['slenderness_ratio'] = lambda_eff
     
     # elastic constants:
     C1_prime = E / (2.0 * (E - G))
     C2_prime = (2.0 * np.pi**2 * (E - G)) / (2.0 * G + E)
+    buckling_dict['C1_prime'] = C1_prime
+    buckling_dict['C2_prime'] = C2_prime
     
     # critical:
     y_cr = free_length * C1_prime * (1.0 - (1.0 - C2_prime/lambda_eff**2)**(0.5))
+    buckling_dict['y_cr'] = y_cr
     
     if verbose:
         print("Buckling Stability:")
@@ -550,6 +566,7 @@ def process_helical_compression_spring_json_input(
         print(f"\tC2_prime: {C2_prime}")
         print(f"\ty_cr: {y_cr}")
     
+    input_dict['buckling_info'] = buckling_dict
     
     ############################################
     # Spring Strength Margin of Safety
@@ -638,6 +655,7 @@ def main() -> None:
         "wahl_stress_factor": None,
         "natural_frequency": None,
         # "service": "severe",
+        "buckling_info": {},
     }
     print(json.dumps(input_dict, indent=4))
     

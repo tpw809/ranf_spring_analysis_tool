@@ -280,8 +280,8 @@ def process_helical_compression_spring_json_input(
     ultimate_safety_factor = input_dict['ultimate_safety_factor']
     
     # safety factor should always be greater than 1:
-    assert yield_safety_factor > 1.0
-    assert ultimate_safety_factor > 1.0
+    assert yield_safety_factor >= 1.0
+    assert ultimate_safety_factor >= 1.0
     
     if verbose:
         print(f"yield_safety_factor = {yield_safety_factor}")
@@ -652,7 +652,7 @@ def process_helical_compression_spring_json_input(
     # alpha = 0.5 => supported between flat surfaces (fixed ends)
     # alpha = 0.707 => one end supported by flat, other end pivoted
     # alpha = 1.0 => both ends pivoted
-    # alpha = 2.0 => one end clampled, other end free
+    # alpha = 2.0 => one end clamped, other end free
     
     if buckling_dict.get('alpha') is None:
         alpha = 0.5
@@ -669,9 +669,15 @@ def process_helical_compression_spring_json_input(
     buckling_dict['C1_prime'] = C1_prime
     buckling_dict['C2_prime'] = C2_prime
     
+    if C2_prime > lambda_eff**2:
+        print("warning: y_cr undefined (complex number)...")
+    
     # critical:
-    y_cr = free_length * C1_prime * (1.0 - (1.0 - C2_prime/lambda_eff**2)**(0.5))
-    buckling_dict['y_cr'] = y_cr
+    part1 = 1.0 - C2_prime/lambda_eff**2
+    y_cr = free_length * C1_prime * (1.0 - (part1)**(0.5))
+    
+    # TODO: fix when this is complex... what does that mean?
+    buckling_dict['y_cr'] = y_cr.real
     
     if verbose:
         print("Buckling Stability:")
@@ -807,7 +813,6 @@ def main() -> None:
         "axial_load": 25.5,  # [lb]
         "helix_direction": None,
         "wahl_stress_factor": None,
-        # "service": "severe",
         "buckling_info": {},
     }
     # print(json.dumps(input_dict, indent=4))

@@ -80,6 +80,78 @@ import json
 import numpy as np
 
 
+def get_max_shear_stress(
+        load:float,
+        d:float,
+        D:float,
+        k:float=1.0,
+        wire_shape:str='round',
+    ) -> float:
+    """Get max corrected shear stress in helical spring wire.
+    
+    Args:
+    d = wire diameter or width (if square)
+    D = coil mean diameter
+    load = applied axial load
+    k = correction factor (Wahl)
+    
+    Returns:
+        float: max corrected shear stress in wire
+    """
+    assert d > 0.0
+    assert D > d
+    assert k >= 1.0
+    
+    if wire_shape == 'round':
+        tau_max = 8.0 * load * D / (np.pi * d**3)
+    elif wire_shape == 'square':
+        tau_max = 4.80 * load * (D/2.0) / d**3
+    else:
+        raise Exception("wire_shape must be round or square")
+    
+    return k * tau_max
+
+
+def get_margin(
+        actual:float, 
+        capability:float, 
+        safety_factor:float,
+    ) -> float:
+    """Margin = (Capability / (Actual * Safety_Factor)) - 1"""
+    assert capability >= 0.0
+    assert actual >= 0.0
+    assert safety_factor >= 1.0
+    if actual * safety_factor == 0.0: return np.inf
+    return (capability / (actual * safety_factor)) - 1
+
+
+def get_zero_margin_load(
+        d:float,
+        D:float,
+        Ss:float,
+        FoS: float=1.1,
+        k:float=1.0,
+        wire_shape:str='round',
+    ):
+    """Get load at zero shear stress margin (yield or ultimate).
+    
+    Args:
+        d = wire diameter or width (if square)
+        D = coil mean diameter
+        Ss = shear strength (yield or ultimate)
+        FoS = factor or safety (yield or ultimate)
+        k = correction factor (Wahl)
+    Returns:
+        float: load at zero shear stress margin (yield or ultimate).
+    """
+    assert d > 0.0
+    assert D > d
+    assert k >= 1.0
+    assert FoS >= 1.0
+    assert Ss >= 0.0
+    return np.pi * d**3 * Ss / (FoS * k * 8.0 * D)
+
+
 def process_helical_compression_spring_json_input(
         input_dict: dict, 
         verbose:bool=False,
@@ -177,12 +249,17 @@ def process_helical_compression_spring_json_input(
     if S_sy is None:
         assert 0.0 < design_stress_ratio < 1.0
         S_sy = design_stress_ratio * S_tu
+        material['yield_shear_strength'] = S_sy
     
     if S_su is None:
         S_su = 0.577 * S_tu
+        material['ultimate_shear_strength'] = S_su
     
     assert S_sy > 0.0
     assert S_su > S_sy
+    
+    # density:
+    rho = material.get('density')
     
     if verbose:
         print(f"Material: {material['name']}")
@@ -193,6 +270,7 @@ def process_helical_compression_spring_json_input(
         print(f"S_su: {S_su}")
         # print(f"S_ty: {S_ty}")
         print(f"S_tu: {S_tu}")
+        print(f"rho: {rho}")
         
     ###########################################
     # Safety Factors (Factors of Safety):
@@ -282,9 +360,6 @@ def process_helical_compression_spring_json_input(
     # Average: general use, 1e5 to 1e6 deflections
     # Severe: rapid deflections, shock loading, valves, 1e6 to 1e7 deflections
     
-    
-    
-    
     ###########################################
     # [-], Spring Index (C):
     ###########################################
@@ -315,18 +390,18 @@ def process_helical_compression_spring_json_input(
     ############################################
     
     # Coil Outer diameter (at free length):
-    if input_dict.get('coil_outer_diameter_at_free_length') is None:
+    if input_dict.get('coil_outer_diameter') is None:
         coil_OD = coil_mean_diameter + wire_diameter
-        input_dict['coil_outer_diameter_at_free_length'] = coil_OD
+        input_dict['coil_outer_diameter'] = coil_OD
     else:
-        assert input_dict['coil_outer_diameter_at_free_length'] > coil_mean_diameter
+        assert input_dict['coil_outer_diameter'] > coil_mean_diameter
 
     # Coil Inner diameter (at free length):
-    if input_dict.get('coil_inner_diameter_at_free_length') is None:
+    if input_dict.get('coil_inner_diameter') is None:
         coil_ID = coil_mean_diameter - wire_diameter
-        input_dict['coil_inner_diameter_at_free_length'] = coil_ID
+        input_dict['coil_inner_diameter'] = coil_ID
     else:
-        assert input_dict['coil_inner_diameter_at_free_length'] < coil_mean_diameter
+        assert input_dict['coil_inner_diameter'] < coil_mean_diameter
     
     if verbose:
         print(f"coil_ID = {coil_ID}")
@@ -357,12 +432,93 @@ def process_helical_compression_spring_json_input(
         SH = input_dict['solid_height']
     
     deflection_at_solid = free_length - SH
-    input_dict['deflection_at_solid'] = deflection_at_solid
     
     if verbose:
         print(f"total coils (TC): {TC}")
         print(f"solid height (SH): {SH}")
     
+    ############################################
+    # MIL-STD-29A, section 21.3: Diameter Changes in Compression Springs
+    ############################################
+    
+    # Increase in outside diameter when compressed:
+    # OD_c = outside diameter at solid length:
+    OD_c = np.sqrt(coil_mean_diameter**2 + (pitch**2 - wire_diameter**2)/np.pi**2) + wire_diameter
+
+    # input_dict['coil_outer_diameter_at_solid'] = OD_c
+    
+    if verbose:
+        print(f"coil_outer_diameter_at_solid = {OD_c}")
+    
+    ############################################
+    # Stiffness:
+    ############################################
+    
+    if wire_shape == 'round':
+        # helical compression spring rate, k:
+        # spring rate (shigley), pg 592 6th ed.:
+        spring_rate = (G * wire_diameter**4) / (8.0 * coil_mean_diameter**3 * N)
+    elif wire_shape == 'square':
+        pass
+        # TODO: Not yet implemented...
+    else:
+        raise Exception("wire_shape must be round or square")
+    
+    # spring_rate:
+    input_dict['spring_rate'] = spring_rate
+    
+    if verbose:
+        print(f"spring_rate = {spring_rate}")
+    
+    ############################################
+    # Surge & Natural Frequency:
+    ############################################
+    
+    # estimated mass:
+    m_est = np.pi**2 * wire_diameter**2 * coil_mean_diameter * TC * rho / 4.0
+    input_dict['estimated_mass'] = m_est
+    
+    # active mass (for surge & natural frequency):
+    m_act = np.pi**2 * wire_diameter**2 * coil_mean_diameter * N * rho / 4.0
+    input_dict['active_mass'] = m_act
+    
+    # estimated fundamental frequency:
+    # 0.5 or 0.25 ???
+    fun_freq = 0.25 * np.sqrt(spring_rate / m_act)
+    input_dict['fundamental_frequency'] = fun_freq
+    
+    ############################################
+    # MIL-STD-29A, section 21.11: Curvature Stress-Correction Factors
+    ############################################
+    
+    # Shear Stress Correction Factor:
+    #k_shear = (2.0 * C + 1.0) / (2.0 * C)
+    #input_dict['shear_stress_correction_factor'] = k_shear
+    #if verbose:
+    #    print(f"k_shear = {k_shear}")
+    
+    # Curvature Stress Correction Factor: K
+    # Wahl Stress Correction Factor, k_wahl
+    k_wahl = (4.0 * C - 1.0) / (4.0 * C - 4.0) + 0.615 / C
+    input_dict['wahl_stress_factor'] = k_wahl
+    
+    if verbose:
+        print(f"k_wahl = {k_wahl}")
+    
+    # Bergstrasser Factor:
+    #k_berg = (4.0 * C + 2.0) / (4.0 * C - 3.0)
+    #input_dict['bergstrasser_factor'] = k_berg
+    #if verbose:
+    #    print(f"k_berg = {k_berg}")
+    
+    # Curvature stress correction factor:
+    #k_curv = k_wahl / k_shear
+    #input_dict['curvature_stress_factor'] = k_curv
+    #if verbose:
+    #    print(f"k_curv = {k_curv}")
+    
+    # as spring diameter increases, this approaches:
+    # (1.0 + d / (4.0 * r))
     
     ############################################
     # MIL-STD-29A, section 21.1: Design Formulas
@@ -378,43 +534,75 @@ def process_helical_compression_spring_json_input(
     # 0 ult margin
     # 0 buckling margin
     
+    # No Load:
+    # no_load_case = {}
+    # no_load_case['length'] = free_length
+    # no_load_case['load'] = 0.0
+    # no_load_case['deflection'] = 0.0
+    # no_load_case['uncorrected_shear_stress'] = 0.0
+    # no_load_case['corrected_shear_stress'] = 0.0
+    # input_dict['no_load_case'] = no_load_case
+    
+    # solid case:
+    solid_case = {}
+    solid_case['length'] = SH
+    load_at_solid = deflection_at_solid * spring_rate
+    solid_case['load'] = load_at_solid
+    solid_case['deflection'] = deflection_at_solid
+    
+    if wire_shape == 'round':
+        # max shear stress in wire (Shigley):
+        tau_max_solid = 8.0 * load_at_solid * coil_mean_diameter / (np.pi * wire_diameter**3)
+    elif wire_shape == 'square':
+        # max shear stress in the spring:
+        # stress analysis manual, pg 1-96:
+        tau_max_solid = 4.80 * load_at_solid * r / b**3
+    else:
+        print("rectangular wire not implemented...")
+    
+    solid_case['uncorrected_shear_stress'] = tau_max_solid
+    solid_case['corrected_shear_stress'] = tau_max_solid * k_wahl
+    
+    yield_shear_stress_margin = (S_sy / (yield_safety_factor * tau_max_solid * k_wahl)) - 1.0
+    solid_case['yield_shear_stress_margin'] = yield_shear_stress_margin
+    
+    ultimate_shear_stress_margin = (S_su / (ultimate_safety_factor * tau_max_solid * k_wahl)) - 1.0
+    solid_case['ultimate_shear_stress_margin'] = ultimate_shear_stress_margin
+    
+    solid_case['coil_outer_diameter'] = OD_c
+    
+    input_dict['solid_case'] = solid_case
+    
+    # design (provided) load case:
+    design_load_case = {}
+    design_load_case['load'] = P
+    
     # Table II:
     
     if wire_shape == 'round':
         # torsional stress:
-        # S_t = (P * D) / (0.393 * d**2)
-        S_t = 8.0 * P * coil_mean_diameter / (np.pi * wire_diameter**3)
-        # S_t = (G * d * F) / (np.pi * N *D**2)
-    
-        # deflection, F:
-        deflection_at_load = (8.0 * P * N * coil_mean_diameter**3) / (G * wire_diameter**4)
-        # F = (w * S_t * N * D**3) / (G * d)
-        
-        # helical compression spring rate, k:
-        spring_rate = (G * wire_diameter**4) / (8.0 * coil_mean_diameter**3 * N)
-        
-        # spring rate (shigley), pg 592 6th ed.:
-        k_shigley = wire_diameter**4 * G / (8.0 * coil_mean_diameter**3 * N)
-        
-        # deflection (Shigley), pg 592 6th ed.:
-        y_shigley = ((8.0 * P * coil_mean_diameter**3 * N) / (G*wire_diameter**4)) * (1.0 + 1.0 / (2.0 * C**2))
-        
         # max shear stress in the spring:
         # stress analysis manual, pg 1-95:
-        # s_max = 16.0 * P * r / (np.pi * d**3) * (1.0 + d / (4.0 * r))
-        s_max = 16.0 * P * r / (np.pi * wire_diameter**3)
-        
         # max shear stress in wire (Shigley):
         tau_max = 8.0 * P * coil_mean_diameter / (np.pi * wire_diameter**3)
         
         # deflection:
         # stress analysis manual, pg 1-95:
         delta = 64.0 * P*r**3*N / (G * wire_diameter**4)
+        
+        # deflection, F:
+        deflection_at_load = (8.0 * P * N * coil_mean_diameter**3) / (G * wire_diameter**4)
+        # F = (w * S_t * N * D**3) / (G * d)
+        
+        # deflection (Shigley), pg 592 6th ed.:
+        y_shigley = ((8.0 * P * coil_mean_diameter**3 * N) / (G*wire_diameter**4)) * (1.0 + 1.0 / (2.0 * C**2))
+        
+        print(delta, deflection_at_load, y_shigley)
     
     elif wire_shape == 'square':
         # max shear stress in the spring:
         # stress analysis manual, pg 1-96:
-        s_max = 4.80 * P * r / b**3
+        tau_max = 4.80 * P * r / b**3
         
         # deflection, delta:
         # stress analysis manual, pg 1-96:
@@ -424,105 +612,31 @@ def process_helical_compression_spring_json_input(
     
     
     # deflection_at_load:
-    input_dict['deflection_at_load'] = deflection_at_load
-    
-    # spring_rate:
-    input_dict['spring_rate'] = spring_rate
+    design_load_case['deflection'] = deflection_at_load
     
     if verbose:
         print(f"deflection_at_load = {deflection_at_load}")
         print(f"delta = {delta}")
         print(f"y_shigley = {y_shigley}")
-        print(f"spring_rate = {spring_rate}")
-        print(f"spring_rate(Shigley) = {k_shigley}")
     
-    
-    if input_dict.get('load_at_solid_height') is None:
-        input_dict['load_at_solid_height'] = (free_length - SH) * spring_rate
-    
+    # if input_dict.get('load_at_solid_height') is None:
+    #     input_dict['load_at_solid_height'] = (free_length - SH) * spring_rate
     
     if deflection_at_load > deflection_at_solid:
         print("***Warning Solid Height Reached at Load***")
     
-    
-    ############################################
-    # MIL-STD-29A, section 21.3: Diameter Changes in Compression Springs
-    ############################################
-    
-    # Increase in outside diameter when compressed:
-    # OD_c = outside diameter at solid length:
-    OD_c = np.sqrt(coil_mean_diameter**2 + (pitch**2 - wire_diameter**2)/np.pi**2) + wire_diameter
-
-    input_dict['coil_outer_diameter_at_solid'] = OD_c
-    
-    if verbose:
-        print(f"coil_outer_diameter_at_solid = {OD_c}")
-    
-    ############################################
-    # MIL-STD-29A, section 21.11: Curvature Stress-Correction Factors
-    ############################################
-    
-    # Shear Stress Correction Factor:
-    k_shear = (2.0 * C + 1.0) / (2.0 * C)
-    input_dict['shear_stress_correction_factor'] = k_shear
-    
-    if verbose:
-        print(f"k_shear = {k_shear}")
-    
-    # Curvature Stress Correction Factor: K
-    # Wahl Stress Correction Factor, K_w
-    k_wahl = (4.0 * C - 1.0) / (4.0 * C - 4.0) + 0.615 / C
-    input_dict['wahl_stress_factor'] = k_wahl
-    
-    if verbose:
-        print(f"k_wahl = {k_wahl}")
-    
-    
-    # Bergstrasser Factor:
-    k_berg = (4.0 * C + 2.0) / (4.0 * C - 3.0)
-    input_dict['bergstrasser_factor'] = k_berg
-    
-    if verbose:
-        print(f"k_berg = {k_berg}")
-    
-    
-    
-    # Curvature stress correction factor:
-    k_curv = k_wahl / k_shear
-    input_dict['curvature_stress_factor'] = k_curv
-    
-    if verbose:
-        print(f"k_curv = {k_curv}")
-    
-    
+    design_load_case['length'] = free_length - deflection_at_load
+    design_load_case['uncorrected_shear_stress'] = tau_max
     
     # Max shear stress:
-    print("using Wahl stress correction factor...")
-    s_max_correct = s_max * k_wahl
-    input_dict['max_corrected_stress'] = s_max_correct
-    
-    if verbose:
-        print(f"s_max_correct = {s_max_correct}")
-    
-    S_t_max = S_t * k_wahl
-    
-    if verbose:
-        print(f"S_t_max = {S_t_max}")
-    
     # max shear stress in wire (Shigley):
-    tau_max = tau_max * k_wahl
+    print("using Wahl stress correction factor...")
+    tau_max_correct = tau_max * k_wahl
+    design_load_case['corrected_shear_stress'] = tau_max_correct
     
     if verbose:
         print(f"tau_max = {tau_max}")
-    
-    # as spring diameter increases, this approaches:
-    # (1.0 + d / (4.0 * r))
-    
-    
-    
-    
-    
-    
+        print(f"tau_max_correct = {tau_max_correct}")
     
     ############################################
     # Buckling Stability
@@ -539,6 +653,7 @@ def process_helical_compression_spring_json_input(
     # alpha = 0.707 => one end supported by flat, other end pivoted
     # alpha = 1.0 => both ends pivoted
     # alpha = 2.0 => one end clampled, other end free
+    
     if buckling_dict.get('alpha') is None:
         alpha = 0.5
         buckling_dict['alpha'] = alpha
@@ -568,6 +683,8 @@ def process_helical_compression_spring_json_input(
     
     input_dict['buckling_info'] = buckling_dict
     
+    # TODO: find length at buckling...
+    
     ############################################
     # Spring Strength Margin of Safety
     ############################################
@@ -590,15 +707,62 @@ def process_helical_compression_spring_json_input(
     # Combine => S_sy ~ 0.45 * S_tu
     # design_stress_ratio = 0.45
     
-    yield_shear_stress_margin = (S_sy / (yield_safety_factor * tau_max)) - 1.0
-    input_dict['yield_shear_stress_margin'] = yield_shear_stress_margin
+    yield_shear_stress_margin = (S_sy / (yield_safety_factor * tau_max_correct)) - 1.0
+    design_load_case['yield_shear_stress_margin'] = yield_shear_stress_margin
     
-    ultimate_shear_stress_margin = (S_su / (ultimate_safety_factor * tau_max)) - 1.0
-    input_dict['ultimate_shear_stress_margin'] = ultimate_shear_stress_margin
+    ultimate_shear_stress_margin = (S_su / (ultimate_safety_factor * tau_max_correct)) - 1.0
+    design_load_case['ultimate_shear_stress_margin'] = ultimate_shear_stress_margin
     
     if verbose:
         print(f"yield_shear_stress_margin = {yield_shear_stress_margin}")
         print(f"ultimate_shear_stress_margin = {ultimate_shear_stress_margin}")
+    
+    input_dict['design_load_case'] = design_load_case
+    
+    ############################################
+    # find loads at 0 margin:
+    ############################################
+    # find when corrected shear stress == S_sy and S_su
+    P0_yield = get_zero_margin_load(
+        d=wire_diameter,
+        D=coil_mean_diameter,
+        Ss=S_sy,
+        FoS=yield_safety_factor,
+        k=k_wahl,
+        # wire_shape:str='round',
+    )
+    # print(f"P0_yield = {P0_yield}")
+    input_dict['load_at_0_yield_margin'] = P0_yield
+    
+    P0_ult = get_zero_margin_load(
+        d=wire_diameter,
+        D=coil_mean_diameter,
+        Ss=S_su,
+        FoS=ultimate_safety_factor,
+        k=k_wahl,
+        # wire_shape:str='round',
+    )
+    # print(f"P0_ult = {P0_yield}")
+    input_dict['load_at_0_ult_margin'] = P0_ult
+    
+    # inputs:
+    # safety_factor = yield_safety_factor
+    # 
+    # tau_max_correct = get_max_shear_stress(
+    #     load=P0_yield,
+    #     d=wire_diameter,
+    #     D=coil_mean_diameter,
+    #     k=k_wahl,
+    #     wire_shape=wire_shape,
+    # )
+    # print(f"tau_max_correct = {tau_max_correct}")
+    # 
+    # margin = get_margin(
+    #     actual=tau_max_correct,
+    #     capability=S_sy,
+    #     safety_factor=yield_safety_factor,
+    # )
+    # print(f"margin = {margin}")
     
     ###########################################
     # return dictionary with new data:
@@ -619,11 +783,8 @@ def main() -> None:
         "coil_mean_diameter": 0.33 - 0.059,  # [in]
         "free_length": 1.75,  # [in]
         "free_length_pitch": None,
-        # "mean_radius": 5.0,  # [in]
         "service": "light",
         "spring_index": None,
-        #"outer_diameter": None,  # [in]
-        #"inner_diameter": None,  # [in]
         "spring_rate": 58.0,  # [lb/in]
         "active_coils": 15.75,  # N
         "total_coils": 17.75,  # TC
@@ -636,28 +797,20 @@ def main() -> None:
             "elastic_modulus": 30.0e6,  # [psi]
             "torsion_modulus": 11.5e6,  # [psi]
             "elastic_limit_ratio": 0.6,
-            "ultimate_tensile_strength": 300.0e3,  # [psi]
+            "ultimate_tensile_strength": 250.0e3,  # [psi]
             "yield_shear_strength": None, # [psi]
             "design_stress_ratio": 0.45, # % of min tensile
             "max_operating_temperature": 250.0,  # [F]
             "density": 0.28,  # [lb/in^3]
             "description": "",
         },
-        "axial_load": 30.0,  # [lb]
-        # "solid_height": 1.04,  # [in]
-        "load_at_solid_height": None,
-        "torsional_stress": None,
-        "deflection_at_load": None,
-        # "outer_diameter_increase": None,
-        "slenderness_ratio": None,
+        "axial_load": 25.5,  # [lb]
         "helix_direction": None,
-        "shear_stress_correction_factor": None,
         "wahl_stress_factor": None,
-        "natural_frequency": None,
         # "service": "severe",
         "buckling_info": {},
     }
-    print(json.dumps(input_dict, indent=4))
+    # print(json.dumps(input_dict, indent=4))
     
     output_dict = process_helical_compression_spring_json_input(input_dict, verbose=True)
     print(json.dumps(output_dict, indent=4))

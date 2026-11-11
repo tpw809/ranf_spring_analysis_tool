@@ -235,6 +235,9 @@ def main() -> None:
     mts = estimated_mts(d, A, m)
     print(f"mts = {mts}")
     
+    mts = estimated_mts_a229_english(d=0.059)
+    print(f"mts = {mts} [ksi]")
+    
     # A228 Music Wire:
     d_range_a228 = np.linspace(0.1, 6.5, 1000)
     mts_range_a228 = estimated_mts(d_range_a228, A, m)

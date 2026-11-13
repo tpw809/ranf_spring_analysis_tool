@@ -56,3 +56,8 @@ results_dict = spanto.process_helical_compression_spring_json_input(
 
 # print results to terminal:
 print(json.dumps(results_dict, indent=4))
+
+# save results to a file:
+with open("tibetac_example_results.json", "w", encoding="utf-8") as file:
+  json.dump(results_dict, file, indent=4)
+  

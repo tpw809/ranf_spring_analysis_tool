@@ -1,0 +1,73 @@
+{
+    "type": "helical_compression_spring",
+    "name": "TiBetaC_47thAMS",
+    "units": "lb_in_F",
+    "wire_shape": "round",
+    "end_type": "closed_end_ground",
+    "wire_diameter": 0.419,
+    "coil_mean_diameter": 2.689,
+    "free_length": 10.0,
+    "service": "light",
+    "active_coils": 7.0,
+    "total_coils": 8.0,
+    "yield_safety_factor": 1.07,
+    "ultimate_safety_factor": 1.2,
+    "material": {
+        "name": "TiBetaC",
+        "spec": "AMS4957",
+        "units": "lb_in_F",
+        "elastic_modulus": 14000000.0,
+        "torsion_modulus": 5600000.0,
+        "ultimate_tensile_strength": 180000.0,
+        "yield_tensile_strength": 160000.0,
+        "ultimate_shear_strength": 103859.99999999999,
+        "yield_shear_strength": 92320.0,
+        "density": 0.174,
+        "description": ""
+    },
+    "axial_load": 750.0,
+    "buckling_info": {
+        "alpha": 0.5,
+        "slenderness_ratio": 1.859427296392711,
+        "C1_prime": 0.8333333333333334,
+        "C2_prime": 6.579736267392905,
+        "y_cr": 8.333333333333332
+    },
+    "free_length_pitch": 1.308857142857143,
+    "spring_index": 6.417661097852029,
+    "coil_outer_diameter": 3.108,
+    "coil_inner_diameter": 2.27,
+    "solid_height": 3.352,
+    "spring_rate": 158.51986185745963,
+    "estimated_mass": 1.621428631074068,
+    "active_mass": 1.4187500521898095,
+    "fundamental_frequency": 2.6425846380836044,
+    "wahl_stress_factor": 1.2342654279222087,
+    "solid_case": {
+        "length": 3.352,
+        "load": 1053.8400416283916,
+        "deflection": 6.648,
+        "uncorrected_shear_stress": 98098.76582803657,
+        "corrected_shear_stress": 121079.91518338211,
+        "yield_shear_stress_margin": -0.28740969382825055,
+        "ultimate_shear_stress_margin": -0.2851828491214641,
+        "coil_outer_diameter": 3.136812904283943
+    },
+    "design_load_case": {
+        "load": 750.0,
+        "deflection": 4.731268316864903,
+        "length": 5.268731683135097,
+        "uncorrected_shear_stress": 69815.22001891378,
+        "corrected_shear_stress": 86170.51241212778,
+        "yield_shear_stress_margin": 0.0012749305600330274,
+        "ultimate_shear_stress_margin": 0.004403914718033031
+    },
+    "load_at_0_yield_margin": 750.9561979200248,
+    "load_at_0_ult_margin": 753.3029360385246,
+    "metadata": {
+        "datetime": "2026-11-13T08:24:57.530022",
+        "version": "0.1.0",
+        "run_notes": "Using Wahl stress correction factor ... Setting default end condition for buckling: alpha=0.5 ... Warning: y_cr undefined (complex number) ... ",
+        "generated_by": "roads_are_no_fun.spring_analysis_tool.process_helical_compression_spring_json_input"
+    }
+}

@@ -171,6 +171,35 @@ def get_zero_margin_load(
     return np.pi * d**3 * Ss / (FoS * k * 8.0 * D)
 
 
+def get_energy_stored(k: float, x: float) -> float:
+    """Get energy stored at deflection.
+    
+    PE = 0.5 * k * x^2
+    
+    Args:
+        k (float): stiffness.
+        x (float): deflection.
+    """
+    assert k >= 0.0
+    return 0.5 * k * x**2
+
+
+def get_coil_gap():
+    """Get gap between coils.
+    
+    If gap is smaller than the wire diameter, then even if the spring breaks, it cannot coil into itself.
+    
+    Args:
+        L (float): current length
+        SH (float): solid height (when gap = 0)
+        N (float): number of coils (active or total?)
+    """
+    assert SH > 0.0
+    assert L >= SH
+    assert N >= 1.0
+    return (L - SH) / N
+
+
 def process_helical_compression_spring_json_input(
         input_dict: dict, 
         verbose:bool=False,
@@ -381,7 +410,7 @@ def process_helical_compression_spring_json_input(
         raise Exception("provide valid end_type")
     
     if input_dict.get('free_length_pitch') is None:
-        input_dict['free_length_pitch'] = pitch
+        input_dict['free_length_pitch'] = np.round(pitch, 6)
     else:
         print(f"calculated pitch: {pitch}")
         print(f"provided pitch: {pitch}")
@@ -406,7 +435,7 @@ def process_helical_compression_spring_json_input(
         else:
             print("need to implement rectangular wire...")
         
-        input_dict['spring_index'] = C
+        input_dict['spring_index'] = np.round(C, 6)
     else:
         C = input_dict['spring_index']
     
@@ -424,14 +453,14 @@ def process_helical_compression_spring_json_input(
     # Coil Outer diameter (at free length):
     if input_dict.get('coil_outer_diameter') is None:
         coil_OD = coil_mean_diameter + wire_diameter
-        input_dict['coil_outer_diameter'] = coil_OD
+        input_dict['coil_outer_diameter'] = np.round(coil_OD, 6)
     else:
         assert input_dict['coil_outer_diameter'] > coil_mean_diameter
 
     # Coil Inner diameter (at free length):
     if input_dict.get('coil_inner_diameter') is None:
         coil_ID = coil_mean_diameter - wire_diameter
-        input_dict['coil_inner_diameter'] = coil_ID
+        input_dict['coil_inner_diameter'] = np.round(coil_ID, 6)
     else:
         assert input_dict['coil_inner_diameter'] < coil_mean_diameter
     
@@ -457,7 +486,7 @@ def process_helical_compression_spring_json_input(
         else:
             raise Exception('select valid end_type')
         
-        input_dict['solid_height'] = SH
+        input_dict['solid_height'] = np.round(SH, 6)
         
     else:
         assert input_dict['solid_height'] < free_length
@@ -497,7 +526,7 @@ def process_helical_compression_spring_json_input(
         raise Exception("wire_shape must be round or square")
     
     # spring_rate:
-    input_dict['spring_rate'] = spring_rate
+    input_dict['spring_rate'] = np.round(spring_rate, 6)
     
     if verbose:
         print(f"spring_rate = {spring_rate}")
@@ -508,16 +537,16 @@ def process_helical_compression_spring_json_input(
     
     # estimated mass:
     m_est = np.pi**2 * wire_diameter**2 * coil_mean_diameter * TC * rho / 4.0
-    input_dict['estimated_mass'] = m_est
+    input_dict['estimated_mass'] = np.round(m_est, 6)
     
     # active mass (for surge & natural frequency):
     m_act = np.pi**2 * wire_diameter**2 * coil_mean_diameter * N * rho / 4.0
-    input_dict['active_mass'] = m_act
+    input_dict['active_mass'] = np.round(m_act, 6)
     
     # estimated fundamental frequency:
     # 0.5 or 0.25 ???
     fun_freq = 0.25 * np.sqrt(spring_rate / m_act)
-    input_dict['fundamental_frequency'] = fun_freq
+    input_dict['fundamental_frequency'] = np.round(fun_freq, 6)
     
     ############################################
     # MIL-STD-29A, section 21.11: Curvature Stress-Correction Factors
@@ -532,7 +561,7 @@ def process_helical_compression_spring_json_input(
     # Curvature Stress Correction Factor: K
     # Wahl Stress Correction Factor, k_wahl
     k_wahl = (4.0 * C - 1.0) / (4.0 * C - 4.0) + 0.615 / C
-    input_dict['wahl_stress_factor'] = k_wahl
+    input_dict['wahl_stress_factor'] = np.round(k_wahl, 6)
     
     if verbose:
         print(f"k_wahl = {k_wahl}")
@@ -580,10 +609,10 @@ def process_helical_compression_spring_json_input(
     
     # solid case:
     solid_case = {}
-    solid_case['length'] = SH
+    solid_case['length'] = np.round(SH, 6)
     load_at_solid = deflection_at_solid * spring_rate
-    solid_case['load'] = load_at_solid
-    solid_case['deflection'] = deflection_at_solid
+    solid_case['load'] = np.round(load_at_solid, 6)
+    solid_case['deflection'] = np.round(deflection_at_solid, 6)
     
     if wire_shape == 'round':
         # max shear stress in wire (Shigley):
@@ -595,16 +624,22 @@ def process_helical_compression_spring_json_input(
     else:
         print("rectangular wire not implemented...")
     
-    solid_case['uncorrected_shear_stress'] = tau_max_solid
-    solid_case['corrected_shear_stress'] = tau_max_solid * k_wahl
+    solid_case['uncorrected_shear_stress'] = np.round(tau_max_solid, 6)
+    solid_case['corrected_shear_stress'] = np.round(tau_max_solid * k_wahl, 6)
     
     yield_shear_stress_margin = (S_sy / (yield_safety_factor * tau_max_solid * k_wahl)) - 1.0
-    solid_case['yield_shear_stress_margin'] = yield_shear_stress_margin
+    solid_case['yield_shear_stress_margin'] = np.round(yield_shear_stress_margin, 6)
     
     ultimate_shear_stress_margin = (S_su / (ultimate_safety_factor * tau_max_solid * k_wahl)) - 1.0
-    solid_case['ultimate_shear_stress_margin'] = ultimate_shear_stress_margin
+    solid_case['ultimate_shear_stress_margin'] = np.round(ultimate_shear_stress_margin, 6)
     
-    solid_case['coil_outer_diameter'] = OD_c
+    solid_case['coil_outer_diameter'] = np.round(OD_c, 6)
+    
+    # energy stored:
+    solid_case['stored_energy'] = np.round(get_energy_stored(
+        k=spring_rate, 
+        x=deflection_at_solid,
+    ), 6)
     
     input_dict['solid_case'] = solid_case
     
@@ -647,7 +682,7 @@ def process_helical_compression_spring_json_input(
     
     
     # deflection_at_load:
-    design_load_case['deflection'] = deflection_at_load
+    design_load_case['deflection'] = np.round(deflection_at_load, 6)
     
     if verbose:
         print(f"deflection_at_load = {deflection_at_load}")
@@ -661,13 +696,19 @@ def process_helical_compression_spring_json_input(
         print("***Warning Solid Height Reached at Load***")
         metadata_dict['run_notes'] += "Warning: Solid Height Reached at Load ... "
     
-    design_load_case['length'] = free_length - deflection_at_load
-    design_load_case['uncorrected_shear_stress'] = tau_max
+    design_load_case['length'] = np.round(free_length - deflection_at_load, 6)
+    design_load_case['uncorrected_shear_stress'] = np.round(tau_max, 6)
     
     # Max shear stress:
     # max shear stress in wire (Shigley):
     tau_max_correct = tau_max * k_wahl
-    design_load_case['corrected_shear_stress'] = tau_max_correct
+    design_load_case['corrected_shear_stress'] = np.round(tau_max_correct, 6)
+    
+    # energy stored:
+    design_load_case['stored_energy'] = np.round(get_energy_stored(
+        k=spring_rate, 
+        x=deflection_at_load,
+    ), 6)
     
     if verbose:
         print(f"tau_max = {tau_max}")
@@ -699,13 +740,13 @@ def process_helical_compression_spring_json_input(
     
     # lambda_eff = slenderness ratio:
     lambda_eff = alpha * free_length / coil_mean_diameter
-    buckling_dict['slenderness_ratio'] = lambda_eff
+    buckling_dict['slenderness_ratio'] = np.round(lambda_eff, 6)
     
     # elastic constants:
     C1_prime = E / (2.0 * (E - G))
     C2_prime = (2.0 * np.pi**2 * (E - G)) / (2.0 * G + E)
-    buckling_dict['C1_prime'] = C1_prime
-    buckling_dict['C2_prime'] = C2_prime
+    buckling_dict['C1_prime'] = np.round(C1_prime, 6)
+    buckling_dict['C2_prime'] = np.round(C2_prime, 6)
     
     if C2_prime > lambda_eff**2:
         print("warning: y_cr undefined (complex number)...")
@@ -716,7 +757,7 @@ def process_helical_compression_spring_json_input(
     y_cr = free_length * C1_prime * (1.0 - (part1)**(0.5))
     
     # TODO: fix when this is complex... what does that mean?
-    buckling_dict['y_cr'] = y_cr.real
+    buckling_dict['y_cr'] = np.round(y_cr.real, 6)
     
     if verbose:
         print("Buckling Stability:")
@@ -753,16 +794,67 @@ def process_helical_compression_spring_json_input(
     # design_stress_ratio = 0.45
     
     yield_shear_stress_margin = (S_sy / (yield_safety_factor * tau_max_correct)) - 1.0
-    design_load_case['yield_shear_stress_margin'] = yield_shear_stress_margin
+    design_load_case['yield_shear_stress_margin'] = np.round(yield_shear_stress_margin, 6)
     
     ultimate_shear_stress_margin = (S_su / (ultimate_safety_factor * tau_max_correct)) - 1.0
-    design_load_case['ultimate_shear_stress_margin'] = ultimate_shear_stress_margin
+    design_load_case['ultimate_shear_stress_margin'] = np.round(ultimate_shear_stress_margin, 6)
     
     if verbose:
         print(f"yield_shear_stress_margin = {yield_shear_stress_margin}")
         print(f"ultimate_shear_stress_margin = {ultimate_shear_stress_margin}")
     
     input_dict['design_load_case'] = design_load_case
+    
+    
+    # Applied Deflection Case:
+    # TODO: allow multiple deflection cases...
+    if input_dict.get("applied_deflection") is not None:
+        
+        applied_deflection = input_dict.get("applied_deflection")
+        assert applied_deflection >= 0.0
+        
+        if deflection_at_load > deflection_at_solid:
+            print("***Warning: Applied Deflection greater than solid height***")
+            metadata_dict['run_notes'] += "Warning: applied_deflection greater than solid height ... "
+        
+        applied_deflection_case = {}
+        applied_deflection_case['deflection'] = applied_deflection
+        
+        # Get load from deflection:
+        if wire_shape == 'round':
+            # delta = (8.0 * P * N * coil_mean_diameter**3) / (G * wire_diameter**4)
+            P_deflect = (applied_deflection * G * wire_diameter**4) / (8.0 * N * coil_mean_diameter**3)
+            tau_max_deflect = 8.0 * P_deflect * coil_mean_diameter / (np.pi * wire_diameter**3)
+        
+        
+        tau_max_deflect_correct = tau_max_deflect * k_wahl
+        applied_deflection_case['length'] = np.round(free_length - applied_deflection, 6)
+        applied_deflection_case['uncorrected_shear_stress'] = np.round(tau_max_deflect, 6)
+        applied_deflection_case['corrected_shear_stress'] = np.round(tau_max_deflect_correct, 6)
+        applied_deflection_case['load'] = np.round(P_deflect, 6)
+        
+        
+        
+        # energy stored:
+        applied_deflection_case['stored_energy'] = np.round(get_energy_stored(
+            k=spring_rate, 
+            x=applied_deflection,
+        ), 6)
+        
+        # margins:
+        applied_deflection_case['yield_shear_stress_margin'] = np.round(get_margin(
+            actual=tau_max_deflect_correct, 
+            capability=S_sy, 
+            safety_factor=yield_safety_factor,
+        ), 6)
+        applied_deflection_case['ultimate_shear_stress_margin'] = np.round(get_margin(
+            actual=tau_max_deflect_correct, 
+            capability=S_su, 
+            safety_factor=ultimate_safety_factor,
+        ), 6)
+    
+        input_dict['applied_deflection_case'] = applied_deflection_case
+    
     
     ############################################
     # find loads at 0 margin:
@@ -777,7 +869,7 @@ def process_helical_compression_spring_json_input(
         # wire_shape:str='round',
     )
     # print(f"P0_yield = {P0_yield}")
-    input_dict['load_at_0_yield_margin'] = P0_yield
+    input_dict['load_at_0_yield_margin'] = np.round(P0_yield, 6)
     
     P0_ult = get_zero_margin_load(
         d=wire_diameter,
@@ -788,7 +880,7 @@ def process_helical_compression_spring_json_input(
         # wire_shape:str='round',
     )
     # print(f"P0_ult = {P0_yield}")
-    input_dict['load_at_0_ult_margin'] = P0_ult
+    input_dict['load_at_0_ult_margin'] = np.round(P0_ult, 6)
     
     ###########################################
     # return dictionary with new data:
@@ -833,6 +925,7 @@ def main() -> None:
             "description": "",
         },
         "axial_load": 25.5,  # [lb]
+        "applied_deflection": 0.1, # [in]
         "helix_direction": None,
         "wahl_stress_factor": None,
         "buckling_info": {

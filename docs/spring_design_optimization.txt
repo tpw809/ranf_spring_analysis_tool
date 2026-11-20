@@ -1,0 +1,42 @@
+# design variables:
+- wire diameter
+- coil mean diameter
+- free length
+- number of total coils
+- number of active coils
+- pitch angle?
+
+
+# to minimize:
+- weight / mass
+- length
+- stroke
+- max force
+
+
+# constraints (must meet values):
+- energy
+- max force
+- frequency
+- buckling stability
+- spring index... []
+- spring_rate
+
+
+# a priori assumptions:
+- wire_shape
+- end_type
+- service
+- stroke from 90% to 10% of allowable range
+- material
+- safety factors (1.1, 1.25)
+- solid height occurs at 0 margin...
+- what are typical pitch ranges?
+
+
+Algorithm:
+- make spring input from design variables
+- evaluate solid stroke and 0 margin stroke
+- find load or displacement from assumptions
+- re-evaluate to get final results
+- pull relevant data for min funcs and constraints

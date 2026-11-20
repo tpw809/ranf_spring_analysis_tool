@@ -248,7 +248,8 @@ def process_helical_compression_spring_json_input(
     
     if name == "": # generate unique name...
         name = 'helical_spring_analysis' + timestamp
-        print("generating name...")
+        if verbose:
+            print("generating name...")
     
     ###########################################
     # check for inputs and compute missing data:
@@ -258,7 +259,8 @@ def process_helical_compression_spring_json_input(
     if input_dict.get('axial_load') is None:
         # default axial load is 0:
         input_dict['axial_load'] = 0.0
-        print("No 'axial_load' input provided, default=0")
+        if verbose:
+            print("No 'axial_load' input provided, default=0")
         metadata_dict['run_notes'] += "No 'axial_load' input provided, default=0 ... "
     else:
         assert input_dict['axial_load'] >= 0.0
@@ -355,7 +357,8 @@ def process_helical_compression_spring_json_input(
         # default wire shape is round:
         wire_shape = 'round'
         input_dict['wire_shape'] = wire_shape
-        print("No 'wire_shape' input provided, default='round'")
+        if verbose:
+            print("No 'wire_shape' input provided, default='round'")
         metadata_dict['run_notes'] += "No 'wire_shape' input provided, default='round' ... "
     else:
         wire_shape = input_dict['wire_shape']
@@ -382,7 +385,8 @@ def process_helical_compression_spring_json_input(
     elif wire_shape == 'square': # side length of square wire:
         b = input_dict['wire_width']
     else:
-        print('rectangular not implemented')
+        if verbose:
+            print('rectangular not implemented')
     
     # mean coil diameter at free length:
     # coil_mean_diameter = 10.0
@@ -412,8 +416,9 @@ def process_helical_compression_spring_json_input(
     if input_dict.get('free_length_pitch') is None:
         input_dict['free_length_pitch'] = np.round(pitch, 6)
     else:
-        print(f"calculated pitch: {pitch}")
-        print(f"provided pitch: {pitch}")
+        if verbose:
+            print(f"calculated pitch: {pitch}")
+            print(f"provided pitch: {pitch}")
     
     # Service:
     # Light: static loads, small deflections, seldom used, 1e3 to 1e4 deflections
@@ -443,7 +448,8 @@ def process_helical_compression_spring_json_input(
         print(f"Spring Index, C = D / d = {C}")
     
     if C < 5.0 or C > 15.0:
-        print("WARNING: spring index outside typical range (5-15).")
+        if verbose:
+            print("WARNING: spring index outside typical range (5-15).")
         metadata_dict['run_notes'] += f"WARNING: spring index outside typical range {np.round(C, 4)} vs (5-15) ... "
     
     ############################################
@@ -565,8 +571,7 @@ def process_helical_compression_spring_json_input(
     
     if verbose:
         print(f"k_wahl = {k_wahl}")
-    
-    print("using Wahl stress correction factor...")
+        print("using Wahl stress correction factor...")
     metadata_dict['run_notes'] += "Using Wahl stress correction factor ... "
     
     # Bergstrasser Factor:
@@ -667,7 +672,7 @@ def process_helical_compression_spring_json_input(
         # deflection (Shigley), pg 592 6th ed.:
         y_shigley = ((8.0 * P * coil_mean_diameter**3 * N) / (G*wire_diameter**4)) * (1.0 + 1.0 / (2.0 * C**2))
         
-        print(delta, deflection_at_load, y_shigley)
+        # print(delta, deflection_at_load, y_shigley)
     
     elif wire_shape == 'square':
         # max shear stress in the spring:
@@ -693,7 +698,8 @@ def process_helical_compression_spring_json_input(
     #     input_dict['load_at_solid_height'] = (free_length - SH) * spring_rate
     
     if deflection_at_load > deflection_at_solid:
-        print("***Warning Solid Height Reached at Load***")
+        if verbose:
+            print("***Warning Solid Height Reached at Load***")
         metadata_dict['run_notes'] += "Warning: Solid Height Reached at Load ... "
     
     design_load_case['length'] = np.round(free_length - deflection_at_load, 6)
@@ -733,7 +739,8 @@ def process_helical_compression_spring_json_input(
     if buckling_dict.get('alpha') is None:
         alpha = 0.5
         buckling_dict['alpha'] = alpha
-        print("Setting default end condition for buckling: alpha=0.5")
+        if verbose:
+            print("Setting default end condition for buckling: alpha=0.5")
         metadata_dict['run_notes'] += "Setting default end condition for buckling: alpha=0.5 ... "
     else:
         alpha = buckling_dict.get('alpha')
@@ -749,7 +756,8 @@ def process_helical_compression_spring_json_input(
     buckling_dict['C2_prime'] = np.round(C2_prime, 6)
     
     if C2_prime > lambda_eff**2:
-        print("warning: y_cr undefined (complex number)...")
+        if verbose:
+            print("warning: y_cr undefined (complex number)...")
         metadata_dict['run_notes'] += "Warning: y_cr undefined (complex number) ... "
     
     # critical:
@@ -814,7 +822,8 @@ def process_helical_compression_spring_json_input(
         assert applied_deflection >= 0.0
         
         if deflection_at_load > deflection_at_solid:
-            print("***Warning: Applied Deflection greater than solid height***")
+            if verbose:
+                print("***Warning: Applied Deflection greater than solid height***")
             metadata_dict['run_notes'] += "Warning: applied_deflection greater than solid height ... "
         
         applied_deflection_case = {}
@@ -832,8 +841,6 @@ def process_helical_compression_spring_json_input(
         applied_deflection_case['uncorrected_shear_stress'] = np.round(tau_max_deflect, 6)
         applied_deflection_case['corrected_shear_stress'] = np.round(tau_max_deflect_correct, 6)
         applied_deflection_case['load'] = np.round(P_deflect, 6)
-        
-        
         
         # energy stored:
         applied_deflection_case['stored_energy'] = np.round(get_energy_stored(

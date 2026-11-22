@@ -6,6 +6,10 @@ Mechanical Design and Systems Handbook, Rothbart
 """
 
 # V = volume of active spring material
+# E = elastic modulus
+# G = torsion modulus
+# sigma = tensile stress strength
+# tau = shear stress strength
 U/V = K(max sigma)**2 / E
 
 U/V = K(max tau)**2 / G

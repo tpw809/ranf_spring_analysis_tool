@@ -21,7 +21,7 @@ a prior selections:
 Performance Parmeters (objectives) or Constraints:
 
 - load
-- deflection
+- deflection (stroke)
 - mass
 - stored potential energy
 - fundamental frequency
@@ -52,15 +52,15 @@ import spring_analysis_tool as spanto
 SFy = 1.1
 SFu = 1.25
 
-# material strengths:
+# material properties:
 shear_tensile_ratio = 0.577
 
-# tensile:
+# tensile strength:
 S_tu = 180.0e3
 S_ty = 160.0e3
-# shear:
-S_su = shear_tensile_ratio*180.0e3
-S_sy = shear_tensile_ratio*160.0e3
+# shear strength:
+S_su = shear_tensile_ratio*S_tu
+S_sy = shear_tensile_ratio*S_ty
 
 # elastic modulus:
 E = 14.0e6
@@ -128,7 +128,6 @@ print(f"F_max_baseline = {F_max_baseline}")
 delta_max_baseline = F_max_baseline / input_dict["spring_rate"]
 
 baseline_energy = 0.4 * F_max_baseline * delta_max_baseline
-
 # baseline_energy = 1.0*input_dict["design_load_case"]["stored_energy"]
 
 m_baseline = input_dict['estimated_mass']
@@ -156,7 +155,6 @@ class MyConstrainedProblem(ElementwiseProblem):
     d = x[0] # wire diameter
     Dm = x[1] # coil mean diameter
     
-    # TODO: need to determine number of coils...
     # need to set any of: Na or Nt or Ls
     
     # For closed & ground end & round wire:
@@ -203,7 +201,7 @@ class MyConstrainedProblem(ElementwiseProblem):
     
     delta_max = F_max / k
     
-    # L or p: choose to avoid bottoming at load
+    # L or p: choose to avoid bottoming at max load
     Nt = Na + 2
     
     # solid length:
@@ -218,94 +216,19 @@ class MyConstrainedProblem(ElementwiseProblem):
     # mass:
     m = np.pi**2 * d**2 * Dm * Nt * rho / 4.0
     
-    input_dict = {
-        "type": "helical_compression_spring",
-        "name": "optimize_test",
-        "units": "lb_in_F",
-        "wire_shape": "round",
-        "end_type": "closed_end_ground",
-        "wire_diameter": d,  # [in]
-        "coil_mean_diameter": Dm,  # [in]
-        "free_length": L0,  # [in]
-        "service": "light",
-        # "spring_rate": 0.0,  # [lb/in]
-        "active_coils": Na,  # N
-        "total_coils": Nt,  # TC
-        "yield_safety_factor": SFy,
-        "ultimate_safety_factor": SFu,
-        "material": material_props,
-        "axial_load": F2,  # [lb]
-        "buckling_info": {},
-    }
-    
-    # run 1: get solid height and 0 margin deflection
-    # run analysis:
-    try:
-        input_dict = spanto.process_helical_compression_spring_json_input(
-            input_dict, 
-            verbose=False,
-        )
-        
-    except:
-        # null result?
-        pass
-    
-    # extract 10% and 90% stroke range:
-    # if input_dict.get('solid_case') is None:
-    #     solid_deflection = 0.0
-    # else:
-    #     solid_deflection = input_dict['solid_case']['deflection']
-    # 
-    # if input_dict.get('load_at_0_yield_margin') is None:
-    #     load_at_0_yield_margin = 0.0
-    # else:
-    #     load_at_0_yield_margin = input_dict['load_at_0_yield_margin']
-    # 
-    # if input_dict.get('load_at_0_ult_margin') is None:
-    #     load_at_0_ult_margin = 0.0
-    # else:
-    #     load_at_0_ult_margin = input_dict['load_at_0_ult_margin']
-    # 
-    # load_at_0_margin = np.min([load_at_0_yield_margin, load_at_0_ult_margin])
-    # 
-    # design_load = 0.9 * load_at_0_margin
-    
-    # re-run to update design load:
-    
     # Objectives (pymoo always minimizes)
     # mass:
-    if input_dict.get('estimated_mass') is None:
-        f1 = np.pi * (((Dm+d)/2.0)**2 - ((Dm-d)/2.0)**2)*Ls*material_props['density']
-    else:
-        f1 = input_dict['estimated_mass']
-    # length:
-    # f2 = 
-    # max_force:
-    
-    # f1 = 100 * (x[0] ** 2 + x[1] ** 2)
-    # f2 = (x[0] - 1) ** 2 + x[1] ** 2
+    f1 = m
+    # length:  
     f2 = L0
     
-
     # Constraints (formulated as g(x) <= 0)
-    
-    # energy:
-    #g1 = energy
-    # if input_dict.get('design_load_case') is None:
-    #     g1 = 0.0
-    # else:
-    #     g1 = baseline_energy - input_dict['design_load_case']['stored_energy']
-    
-    #g1 = 2 * (x[0] - 0.1) * (x[0] - 0.9) / 0.18
-    #g2 = -20 * (x[0] - 0.4) * (x[0] - 0.6) / 4.8
-    
     g1 = 5.0 - C  # C must be more than 5
     g2 = C - 15.0  # C must be less than 15
     g3 = L0 - 15.0  # L0 must be less than 15
 
-    out["F"] = [f1, f2]
-    # out["F"] = [x[0], x[1], x[2]]
-    out["G"] = [g1, g2, g3]
+    out["F"] = [f1, f2] # objectives
+    out["G"] = [g1, g2, g3] # constraints
 
 
 # Instantiate the problem and algorithm
@@ -335,6 +258,3 @@ plot2.add(np.array([0.419,2.689]), color='r', marker='*')
 
 plot.show()
 plot2.show()
-
-
-

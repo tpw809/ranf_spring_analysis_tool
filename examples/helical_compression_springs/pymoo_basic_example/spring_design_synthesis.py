@@ -17,8 +17,8 @@ shear_tensile_ratio = 0.577
 S_tu = 180.0e3
 S_ty = 160.0e3
 # shear strength:
-S_su = shear_tensile_ratio*180.0e3
-S_sy = shear_tensile_ratio*160.0e3
+S_su = shear_tensile_ratio*S_tu
+S_sy = shear_tensile_ratio*S_ty
 
 # elastic modulus:
 E = 14.0e6
@@ -58,7 +58,6 @@ F_max = tau_max * np.pi * d**3 / (k_wahl * 8.0 * Dm)
 F1 = 0.1 * F_max
 F2 = 0.9 * F_max
 
-
 # Choose Na, Nt, or Ls to meet deflection, stiffness, or energy
 Na = 10.0
 k = (G*d**4) / (8.0*Dm**3*Na)
@@ -77,8 +76,10 @@ k = (G*d**4) / (8.0*Dm**3*Na)
 # Na = G * d**4 / (k * 8.0 * Dm**3)
 
 delta_max = F_max / k
+delta1 = F1 / k
+delta2 = F2 / k
 
-# L or p: choose to avoid bottoming at load
+# L or p: choose to avoid bottoming at max load
 Nt = Na + 2
 
 # solid length:
@@ -94,9 +95,12 @@ p0 = (L0 - 2.0*d) / Na
 m = np.pi**2 * d**2 * Dm * Nt * rho / 4.0
 
 # fundamental frequency:
+fn = 0.25 * np.sqrt(k / m)
 
-
-
+print(f"S_tu = {S_tu}")
+print(f"S_ty = {S_ty}")
+print(f"S_su = {S_su}")
+print(f"S_sy = {S_sy}")
 print(f"wire diameter, d = {d}")
 print(f"mean coil diameter, Dm = {Dm}")
 print(f"spring index, C = {C}")
@@ -108,9 +112,13 @@ print(f"F_max = {F_max}")
 print(f"F1 = {F1}")
 print(f"F2 = {F2}")
 print(f"delta_max = {delta_max}")
+print(f"delta1 = {delta1}")
+print(f"delta2 = {delta2}")
+print(f"stiffness, k = {k}")
 print(f"Na = {Na}")
 print(f"Nt = {Nt}")
 print(f"solid length, Ls = {Ls}")
 print(f"free length, L0 = {L0}")
 print(f"pitch, p0 = {p0}")
 print(f"mass, m = {m}")
+print(f"fundamental frequency, fn = {fn}")

@@ -1,28 +1,38 @@
 """Combine spring stiffness, series and parallel.
 
-Reference: Mechanical Design and Systems Handbook, Rothbart, Section 33: Spring, William R Johnson. 
+Reference: 
+Mechanical Design and Systems Handbook, Rothbart, Section 33: Springs, William R Johnson. 
 """
 
 
 def combined_stiffness_in_series(k1: float, k2: float) -> float:
-    """
+    """Combine spring stiffness in series.
     
     Springs in series carry the same load, but have indepdendent deflections.
     
     P12 = P1 = P2
     
     delta_12 = delta_1 + delta_2
+    
+    Args:
+        k1 (float): stiffness of spring 1
+        k2 (float): stiffness of spring 2
     """
     return 1.0 / (1.0 / k1 + 1.0 / k2)
 
 
 def combined_stiffness_in_parallel(k1: float, k2: float) -> float:
-    """
+    """Combine spring stiffness in parallel.
+    
     Springs in parallel have the same displacement, but carry independent loads.
     
     P12 = P1 + P2
     
     delta_12 = delta_1 = delta_2
+    
+    Args:
+        k1 (float): stiffness of spring 1
+        k2 (float): stiffness of spring 2
     """
     return k1 + k2
 

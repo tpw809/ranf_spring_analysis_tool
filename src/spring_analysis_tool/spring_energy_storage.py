@@ -16,3 +16,9 @@ x2 = 0.2
 # [J], energy:
 E = 0.5 * k * (x2**2 - x1**2)
 print(f"E = {E} [J]")
+
+# F = k * x
+# k = F / x
+# Energy equivalent to work:
+# integral of force * distance
+# E = W = 0.5 * F * x
